@@ -33,7 +33,7 @@ export const PROJECTS: Project[] = [
     date: 'ongoing',
     description:
       'a neutral, filterable directory of discord alternative platforms. no rankings, no reviews, no ads, no tracking.',
-    stack: ['astro', 'typescript', 'static json'],
+    stack: ['astro'],
     status: 'active',
     body: [
       "the internet has a lot of 'best of' lists and almost none of them are neutral. one rule here: show the platforms, show what they do, let the reader decide.",
@@ -48,7 +48,7 @@ export const PROJECTS: Project[] = [
     date: 'ongoing',
     description:
       'community manager and volunteer ui contributor. ui mockups, interactive prototypes, and design reference files for the platform.',
-    stack: ['html', 'css', 'figma'],
+    stack: ['astro', 'html', 'css', 'javascript', 'typescript'],
     status: 'active',
     body: [
       'gamevox is a privacy-focused voice chat platform. my role is community manager; my contribution as a volunteer is ui.',
