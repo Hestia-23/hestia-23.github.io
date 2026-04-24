@@ -24,3 +24,4 @@ Setting up the working rails for the Portfolio repo. Astro minimal scaffold is a
 
 ### Resolved
 - Deploy pipeline scaffolded. First push to master will trigger it; user needs to flip Settings → Pages → Source to "GitHub Actions" if it isn't already.
+- First deploy green on `9674ebb`. `https://hestia-23.github.io` is live and serving the Astro scaffold. Pipeline confirmed end-to-end: push → build → deploy → live URL. No surprises.
