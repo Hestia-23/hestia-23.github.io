@@ -73,3 +73,31 @@ Turning the four empty scaffold pages into real portfolio pages by porting the u
 
 ### Resolved
 - Four-page portfolio is no longer empty. 8 routes build (`/`, `/about/`, `/projects/`, three `/projects/<slug>/` pages, `/contact/`, plus Astro's 404 default). Nav, Hero, ProjectList, ContactList, BackLink, Footer all on screen. Real email, real repo links, real GameVox link.
+
+---
+
+## 2026-04-24 (continued, icon policy and polish)
+
+### What I'm doing
+Polishing after the port. Adopting a site-wide icon policy, wiring the contact list with real brand/lucide icons and the X handle, correcting project stacks the owner flagged, and replacing the default Astro scaffold README with one that matches the real repo.
+
+### Decisions
+- **Icon policy: Simple Icons for brand marks, Lucide for everything else.** The design system already said "Lucide via CDN, 1.5 stroke, 1em with text"; I'm treating that as covering all non-brand icons. Brand marks (Astro, HTML5, CSS, JavaScript, TypeScript, GitHub, GitHub Sponsors, X) come from Simple Icons. Inlined as SVG rather than CDN because the site ships zero JS and I do not want a script or font dependency for a handful of glyphs. Commit `7b52397`.
+- **Stroke weight overrides Lucide's default.** Lucide ships at `stroke-width="2"`. Design system says 1.5. The design system wins; every Lucide icon component sets `stroke-width="1.5"` at the source.
+- **Chevrons replaced unicode arrows.** `→` / `←` out; `ChevronsRight` / `ChevronsLeft` in. Hero CTA, project row trailing glyph, home "all projects" link, back link on project detail. Arrow animations (translate on hover) still work because `.arrow` and `.project-arrow` classes wrap the SVG the same way they wrapped the glyph.
+- **Icon components live under `src/components/icons/`.** Lucide icons at the root of that directory; brand marks under `icons/brand/`. The folder split mirrors the policy; a grep tells you at a glance which rule a given icon follows.
+- **Base `.icon` class in `components.css`.** `width: 1em; height: 1em; display: inline-block; vertical-align: -0.125em; flex-shrink: 0;`. One rule serves every icon site-wide, scales with the surrounding text's `font-size`, aligns to baseline. Use-site classes can override for specific cases (stack icons in About run at 18px, for example).
+- **ContactList gets an `iconMap`.** Each `ContactItem` now carries an `icon: 'mail' | 'github' | 'sponsors' | 'x'` name. The ContactList component imports the four icon components and resolves the string to a component at render. Keeps the data module free of JSX imports (which `.ts` files cannot do anyway) and keeps the mapping in one place. Commit `6388274`.
+- **`.contact-kind` becomes `inline-flex` with a gap.** Icon plus label without ad-hoc margin. `align-items: center` handles vertical alignment so the icon baselines with the uppercase kind label.
+- **X handle added as a fourth contact row.** `@alethia__23` → `https://x.com/alethia__23`. The `.contact-value` is Garamond italic; the handle reads well in that face.
+- **GameVox stack corrected from guess to ground truth.** Was `['html', 'css', 'figma']` (a plausible inference from the Sponsors bullets). Owner provided the GitHub languages breakdown for the gamevox.com website repo, so now `['astro', 'html', 'css', 'javascript', 'typescript']` in that order. Discord Alternatives similarly shrank from `['astro', 'typescript', 'static json']` to `['astro']` only. Fidelity over decoration. Commit `279aea9`.
+- **Root `README.md` rewritten to match the actual project.** The scaffold default had emoji, title case, and "Astro Starter Kit: Minimal" framing. Replaced with a lowercase, voice-compliant map: `src/` structure, command table, deploy behaviour, design-system pointer, one-paragraph summary of the icon and voice policy. Commit `66871b2`.
+- **Rebased past a direct-on-main Dependabot commit.** Owner enabled Dependabot via the GitHub UI, which committed `a38739d` directly to `master` while I had local commits queued. Local README commit rebased cleanly (different files, no conflict surface). `git pull --rebase` was the right call; a merge commit would have added graph noise for no benefit. History stays linear.
+
+### Stuck on
+- (none)
+
+### Resolved
+- Every `→` / `←` glyph is now a Lucide chevron; every brand reference is a Simple Icons mark; every data field reflects reality, not a guess.
+- Dependabot live. Next time `withastro/action`, `actions/deploy-pages`, `actions/checkout`, or `astro` itself ships an update, a PR will land against master.
+- Root README is an honest document a reader can trust; the design-system README (edited earlier) and this scrapbook are the two other documents worth starting with when opening the repo cold.
