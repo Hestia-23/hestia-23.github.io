@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css?v=4">
+<style>
+  body { padding: 26px 30px; display:flex; flex-direction:column; gap:18px; }
+  .tag { font-family: var(--font-body); font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: var(--fg-subtle); margin-bottom:10px; }
+  .row { display:flex; gap:12px; align-items:center; }
+  .btn { font-family: var(--font-body); font-size: 14px; font-weight: 500; padding: 10px 18px; border-radius: 2px; border: 1px solid transparent; cursor: pointer; transition: background 120ms, border-color 120ms, color 120ms; }
+  .btn-primary { background: var(--accent); color: var(--bg-raised); }
+  .btn-primary:hover { background: var(--accent-hover); }
+  .btn-ghost { background: transparent; color: var(--fg); border-color: var(--rule-strong); }
+  .btn-ghost:hover { background: var(--bg-sunken); }
+  .btn-text { background: transparent; color: var(--accent); padding: 10px 4px; border: 0; text-decoration: underline; text-decoration-color: var(--accent-wash); text-underline-offset: 0.2em; }
+  .btn-text:hover { color: var(--accent-hover); text-decoration-color: var(--accent); }
+  .btn[disabled] { opacity: 0.45; cursor: not-allowed; }
+  .note { font-family: var(--font-display); font-style: italic; font-size: 12px; color: var(--fg-subtle); }
+</style>
+</head>
+<body>
+  <div>
+    <div class="tag">Primary · ghost · text — all aegean, lowercase verbs</div>
+    <div class="row">
+      <button class="btn btn-primary">email</button>
+      <button class="btn btn-ghost">view repo</button>
+      <button class="btn btn-text">read →</button>
+    </div>
+  </div>
+  <div>
+    <div class="tag">Hover · pressed · disabled</div>
+    <div class="row">
+      <button class="btn btn-primary" style="background: var(--accent-hover)">email</button>
+      <button class="btn btn-ghost" style="background: var(--bg-sunken)">view repo</button>
+      <button class="btn btn-primary" disabled>email</button>
+    </div>
+  </div>
+  <div class="note">buttons pull from --accent (aegean). terracotta ember does not appear on interactive surfaces.</div>
+</body>
+</html>

@@ -25,3 +25,26 @@ Setting up the working rails for the Portfolio repo. Astro minimal scaffold is a
 ### Resolved
 - Deploy pipeline scaffolded. First push to master will trigger it; user needs to flip Settings → Pages → Source to "GitHub Actions" if it isn't already.
 - First deploy green on `9674ebb`. `https://hestia-23.github.io` is live and serving the Astro scaffold. Pipeline confirmed end-to-end: push → build → deploy → live URL. No surprises.
+
+---
+
+## 2026-04-24 (continued)
+
+### What I'm doing
+Wiring the `design-system/` package into the Astro site. Tokens, fonts, favicon, a base Layout, and four scaffolded pages. The system is authoritative; this task just plumbs it in.
+
+### Decisions
+- **Tokens live at `src/styles/tokens.css`, imported once via `Layout.astro`.** Astro promotes a component-level CSS import to a global stylesheet, so every page using Layout inherits the palette, type, and semantic element defaults without needing to re-import anywhere. Single source of truth downstream.
+- **Font URLs rewritten from `fonts/` to `/fonts/` (absolute).** Vite bundles the tokens CSS to a hashed path like `/_astro/tokens.XYZ.css`; relative `url("fonts/...")` would resolve against that hash path (wrong). Absolute `/fonts/...` resolves against the site root where `public/fonts/` is served. The site is a user site with no `base` prefix, so `/fonts/` is unambiguous.
+- **Using `@font-face` from tokens, not Astro 6's Fonts API.** The design system ships its own `@font-face` rules and the 17 TTFs alongside them. Using the Fonts API on top would double-declare the families and fight the design system. Agents not invited to reason about font strategy; the design system already decided.
+- **`color-scheme: light dark` meta in Layout head.** Tokens already define an auto dark mode via `prefers-color-scheme`. The meta lets browsers honor that for scrollbars and form controls without a flash of light-on-dark. Aligns with the "pigment-dark, not true dark" stance in the design brief.
+- **Pages start as bare semantic shells: `<main>` + `<h1>` + a pointer comment.** No nav, no footer, no hero lede yet. The JSX reference implementations in `design-system/ui_kits/portfolio/` will port over in a follow-up task; premature porting before the tokens are verified would hide any integration bugs behind layout complexity.
+- **Page titles use `hestia · {page}` with a middot.** Middot is one of the four allowed unicode glyphs in the design system's iconography (along with →, ↗, §). Em-dashes are banned by the voice rules. Home page is just `hestia`, no suffix.
+- **Orphan file flagged, not touched:** `public/favicon.ico` is Astro's default scaffold file and no longer referenced. Leaving it alone per scope discipline; it's dead weight awaiting a cleanup pass.
+
+### Stuck on
+- (none)
+
+### Resolved
+- Design system voice corrections applied to `design-system/README.md` before the integration. Em-dashes out; banned-buzzword list extended with "delve", "navigate the landscape", "it's worth noting"; new "Direct, lead with the answer" rule added. Committed as `c978a48` ahead of the integration commit, so the in-repo rules match the owner's actual writing voice before any page scaffold sees them.
+- Commit structure revised mid-task on the user's call: README voice correction as its own commit (first), then the integration as a single follow-up commit carrying the design-system source and the Astro wiring together. Previously planned as three commits; collapsed to two because "two separate commits, not one" was the explicit instruction, and the README-vs-integration split is the one that matters.

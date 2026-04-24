@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css?v=4">
+<style>
+  /* ── cool pigment-dark — depth through saturation, not neutral.
+     same logic as missal page's oxblood, but in the aegean family:
+     a deep teal-ink that still has chroma in the shadow. ── */
+  .dark {
+    --bg:        #0c2833;   /* saturated aegean teal-ink — pigment, not slate */
+    --bg-raised: #13333f;   /* card / hover */
+    --bg-sunken: #081e28;   /* code, insets */
+    --surface:   #1a3f4c;
+
+    --fg:        #e6eef0;   /* soft marble-white, a hair cool */
+    --fg-muted:  #9cb2b9;
+    --fg-subtle: #6a848d;
+    --fg-faint:  #4e5e65;
+
+    --rule:        #2e4049;
+    --rule-strong: #4e5e65;
+
+    /* aegean lifts — still the functional accent, readable on its own ground */
+    --accent:       #b8ccd4;
+    --accent-hover: #d6e2e8;
+    --accent-wash:  #2c4a55;
+
+    /* ember keeps its warmth — the one spark on a cool ground */
+    --ember:       #e0a58a;
+    --ember-hover: #ecb89f;
+    --ember-wash:  #6b4432;
+
+    --secondary:       #a8b894;
+    --secondary-hover: #c4d2b0;
+
+    --selection-bg: #2c4a55;
+    --selection-fg: #e6eef0;
+
+    background: var(--bg);
+    color: var(--fg);
+  }
+
+  body { margin: 0; }
+  .frame {
+    min-height: 100vh;
+    padding: 48px 56px;
+    font-family: var(--font-body);
+  }
+  .eyebrow {
+    font-size: 11px; font-weight: 500; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--fg-subtle);
+    margin-bottom: 18px;
+  }
+  .wordmark {
+    font-family: var(--font-display); font-style: italic; font-weight: 500;
+    color: var(--ember); font-size: 88px; letter-spacing: -0.02em;
+    line-height: 1; margin: 0 0 28px;
+  }
+  .lede {
+    font-family: var(--font-display); font-style: italic;
+    font-size: 22px; color: var(--fg-muted);
+    line-height: 1.5; max-width: 38ch; margin: 0 0 32px;
+  }
+  .cta-row { display: flex; align-items: center; gap: 18px; margin-bottom: 56px; }
+  .btn-primary {
+    font-size: 14px; font-weight: 500; padding: 12px 22px;
+    background: var(--accent); color: #14222a;
+    border: 0; border-radius: 2px; cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--accent-hover); }
+  .lnk {
+    font-size: 14px; color: var(--fg-muted); text-decoration: none;
+  }
+  .lnk .tip { color: var(--ember); }
+
+  .section-label {
+    font-size: 11px; font-weight: 500; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--fg-subtle);
+    padding-bottom: 10px; border-bottom: 1px solid var(--rule);
+    margin: 40px 0 0;
+  }
+  .row {
+    display: grid; grid-template-columns: 1fr auto; gap: 8px 24px;
+    align-items: baseline; padding: 22px 4px;
+    border-bottom: 1px solid var(--rule); cursor: pointer;
+    transition: background 200ms;
+  }
+  .row:hover { background: var(--bg-raised); }
+  .row:hover .ar { color: var(--accent); transform: translateX(3px); }
+  .row:hover .ar .tip { color: var(--ember); }
+  .title {
+    font-family: var(--font-display); font-weight: 500; font-size: 26px;
+    color: var(--fg); line-height: 1.1;
+  }
+  .title em { font-style: italic; color: var(--fg-muted); font-weight: 400; }
+  .date {
+    grid-row: 1; grid-column: 2;
+    font-family: var(--font-display); font-style: italic;
+    font-size: 14px; color: var(--fg-subtle);
+    display: flex; align-items: baseline; gap: 16px;
+  }
+  .ar {
+    font-size: 18px; color: var(--fg-subtle);
+    transition: transform 200ms, color 200ms; position: relative;
+    display: inline-block;
+  }
+  .ar .tip {
+    position: absolute; left: 0.55em; top: 0; color: transparent;
+    transition: color 200ms;
+  }
+  .desc { grid-column: 1 / -1; font-size: 14px; color: var(--fg-muted); max-width: 58ch; }
+  .meta { grid-column: 1 / -1; font-size: 12px; color: var(--fg-subtle); display: flex; gap: 10px; flex-wrap: wrap; }
+  .meta .sep { opacity: 0.6; }
+  .meta .active { color: var(--accent); }
+  .meta .archived { color: var(--secondary); }
+
+  .tokens {
+    display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px;
+    margin-top: 36px;
+  }
+  .chip { display: flex; flex-direction: column; gap: 4px; }
+  .chip .sw { height: 44px; border-radius: 2px; border: 1px solid var(--rule); }
+  .chip .n { font-size: 10px; color: var(--fg-muted); font-family: var(--font-mono); }
+  .chip .h { font-size: 10px; color: var(--fg-subtle); font-family: var(--font-mono); }
+
+  .note {
+    font-family: var(--font-display); font-style: italic;
+    font-size: 13px; color: var(--fg-subtle);
+    margin-top: 28px; max-width: 60ch;
+  }
+</style>
+</head>
+<body class="dark">
+  <div class="frame">
+    <div class="eyebrow">§ hestia · dark</div>
+    <h1 class="wordmark">hestia</h1>
+    <p class="lede">
+      i build small, careful interfaces.<br>
+      sometimes i write about how.
+    </p>
+    <div class="cta-row">
+      <button class="btn-primary">view projects</button>
+      <a href="#" class="lnk">or send a note <span class="tip">→</span></a>
+    </div>
+
+    <div class="section-label">§ selected work</div>
+    <div>
+      <div class="row">
+        <div class="title">privacypack <em>— a privacy wins card</em></div>
+        <div class="date"><span>april 2026</span><span class="ar">→<span class="tip">→</span></span></div>
+        <div class="desc">your privacy choices, on a single readable card. astro, no javascript.</div>
+        <div class="meta"><span>astro</span><span class="sep">·</span><span>typescript</span><span class="sep">·</span><span>github pages</span><span class="sep">·</span><span class="active">active</span></div>
+      </div>
+      <div class="row" style="background: var(--bg-raised);">
+        <div class="title">hearth-ui</div>
+        <div class="date"><span>march 2026</span><span class="ar" style="color: var(--accent); transform: translateX(3px);">→<span class="tip" style="color: var(--ember);">→</span></span></div>
+        <div class="desc">a small component library for community platforms. work in progress.</div>
+        <div class="meta"><span>astro</span><span class="sep">·</span><span>vanilla css</span><span class="sep">·</span><span class="archived">archived</span></div>
+      </div>
+    </div>
+
+    <div class="note">
+      not true dark — pigment-dark. ground is <span style="font-family:var(--font-mono); font-size:12px; color:var(--fg);">#0c2833</span>, a saturated teal-ink. chroma is load-bearing — if it reads as slate, the brief has failed. warm threads (the ember wordmark, the hover-arrow tip) still ride on cool ground.y missal page's oxblood carries color rather than falling to black. it reads softer because saturation does the work neutral slate can't.
+    </div>
+
+    <div class="tokens">
+      <div class="chip"><div class="sw" style="background:#0c2833"></div><div class="n">--bg · teal-ink</div><div class="h">#0c2833</div></div>
+      <div class="chip"><div class="sw" style="background:#13333f"></div><div class="n">--bg-raised</div><div class="h">#13333f</div></div>
+      <div class="chip"><div class="sw" style="background:#e6eef0"></div><div class="n">--fg</div><div class="h">#e6eef0</div></div>
+      <div class="chip"><div class="sw" style="background:#9cb2b9"></div><div class="n">--fg-muted</div><div class="h">#9cb2b9</div></div>
+      <div class="chip"><div class="sw" style="background:#b8ccd4"></div><div class="n">--accent · aegean</div><div class="h">#b8ccd4</div></div>
+      <div class="chip"><div class="sw" style="background:#e0a58a"></div><div class="n">--ember · terracotta</div><div class="h">#e0a58a</div></div>
+    </div>
+  </div>
+</body>
+</html>

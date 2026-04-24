@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { padding: 28px 32px; }
+  .row { display: flex; align-items: baseline; gap: 18px; padding: 8px 0; border-bottom: 1px solid var(--rule); }
+  .row:last-child { border-bottom: 0; }
+  .label { width: 120px; flex-shrink: 0; font-family: var(--font-mono); font-size: 11px; color: var(--fg-subtle); }
+  .sample { font-family: var(--font-body); color: var(--fg); line-height: 1.4; }
+</style>
+</head>
+<body>
+  <div class="row"><div class="label">step-1 · 18px · lede</div><div class="sample" style="font-size:18px; font-family:var(--font-display); font-style:italic; color:var(--fg-muted)">i build small, careful interfaces.</div></div>
+  <div class="row"><div class="label">step-0 · 16px · body</div><div class="sample" style="font-size:16px">currently on astro and typescript. privacy-minded by default.</div></div>
+  <div class="row"><div class="label">step--1 · 14px · meta</div><div class="sample" style="font-size:14px; color:var(--fg-muted)">astro · typescript · github pages</div></div>
+  <div class="row"><div class="label">step--2 · 12px · footnote</div><div class="sample" style="font-size:12px; color:var(--fg-subtle)">april 2026 · updated two days ago</div></div>
+  <div class="row"><div class="label">eyebrow · 14px</div><div class="sample" style="font-size:12px; text-transform:uppercase; letter-spacing:0.12em; font-weight:500; color:var(--fg-subtle)">§ recent</div></div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { padding: 28px 32px; }
+  .label { font-family: var(--font-mono); font-size: 10px; color: var(--fg-subtle); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 14px; }
+  nav { display: flex; align-items: baseline; justify-content: space-between; padding: 14px 0 16px; border-bottom: 1px solid var(--rule); }
+  .mark { font-family: var(--font-display); font-style: italic; font-size: 22px; color: var(--fg); font-weight: 500; }
+  .links { display:flex; gap: 28px; }
+  .links a { font-family: var(--font-body); font-size: 14px; color: var(--fg-muted); text-decoration: none; }
+  .links a.active { color: var(--fg); }
+  .links a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+  <div class="label">Minimal nav — wordmark + four links, not sticky, hairline under</div>
+  <nav>
+    <div class="mark">hestia</div>
+    <div class="links">
+      <a href="#" class="active">home</a>
+      <a href="#">about</a>
+      <a href="#">projects</a>
+      <a href="#">contact</a>
+    </div>
+  </nav>
+</body>
+</html>

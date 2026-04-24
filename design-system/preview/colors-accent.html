@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css?v=4">
+<style>
+  body { padding: 26px 30px; display:flex; flex-direction:column; gap:18px; }
+  .tag { font-family: var(--font-body); font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: var(--fg-subtle); }
+  .row { display:flex; gap:12px; }
+  .chip { flex:1; padding:14px 16px; border-radius:2px; border:1px solid var(--rule); display:flex; flex-direction:column; gap:4px; }
+  .n { font-size:11px; font-weight:600; font-family: var(--font-mono); }
+  .h { font-size:10px; font-family:var(--font-mono); opacity:.75; }
+  .note { font-family: var(--font-display); font-style: italic; font-size: 13px; color: var(--fg-muted); }
+  .demo { display:flex; align-items:baseline; gap:18px; padding-top: 8px; border-top: 1px solid var(--rule); }
+  .wordmark { font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: 28px; color: var(--terracotta-500); letter-spacing: -0.01em; }
+  .lnk { font-family: var(--font-body); font-size: 13px; color: var(--aegean-500); text-decoration: underline; text-decoration-color: var(--aegean-300); text-underline-offset: 0.2em; }
+  .arrow-hover { font-family: var(--font-body); font-size: 14px; color: var(--stone-500); }
+  .arrow-hover .tip { color: var(--terracotta-500); }
+</style>
+</head>
+<body>
+  <div>
+    <div class="tag" style="margin-bottom:10px">Primary · aegean — links, CTAs, focus, active nav</div>
+    <div class="row">
+      <div class="chip" style="background:#8aa0a8; color:#2a2620"><span class="n">aegean-300 · wash</span><span class="h">#8aa0a8</span></div>
+      <div class="chip" style="background:#4a6670; color:#faf8f3"><span class="n">aegean-500 · accent</span><span class="h">#4a6670</span></div>
+      <div class="chip" style="background:#3a525b; color:#faf8f3"><span class="n">aegean-600 · hover</span><span class="h">#3a525b</span></div>
+    </div>
+  </div>
+  <div>
+    <div class="tag" style="margin-bottom:10px">Secondary · sage — status tags, quiet differentiation</div>
+    <div class="row">
+      <div class="chip" style="background:#7a7a5e; color:#faf8f3"><span class="n">sage-500</span><span class="h">#7a7a5e</span></div>
+      <div class="chip" style="background:#5f5f48; color:#faf8f3"><span class="n">sage-600 · hover</span><span class="h">#5f5f48</span></div>
+      <div class="chip" style="background:#f4f1ea; color:#8a8274; border-style:dashed"><span class="n">— reserve —</span><span class="h">sparingly</span></div>
+    </div>
+  </div>
+  <div>
+    <div class="tag" style="margin-bottom:10px">Ember · terracotta — wordmark italic, § glyph, hover arrow tip only</div>
+    <div class="row">
+      <div class="chip" style="background:#d6a085; color:#2a2620"><span class="n">terracotta-300 · wash</span><span class="h">#d6a085</span></div>
+      <div class="chip" style="background:#b5714c; color:#faf8f3"><span class="n">terracotta-500 · ember</span><span class="h">#b5714c</span></div>
+      <div class="chip" style="background:#9c5d3d; color:#faf8f3"><span class="n">terracotta-600</span><span class="h">#9c5d3d</span></div>
+    </div>
+    <div class="note" style="margin-top:10px">not a link color. not a button color. character, not function.</div>
+  </div>
+  <div class="demo">
+    <span class="wordmark">hestia</span>
+    <a class="lnk" href="#">view all projects →</a>
+    <span class="arrow-hover">hover: →<span class="tip"> →</span></span>
+    <span style="font-family: var(--font-display); font-style: italic; font-size: 12px; color: var(--fg-subtle); margin-left:auto">cool for function, warm for character</span>
+  </div>
+</body>
+</html>

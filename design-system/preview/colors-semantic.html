@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css?v=4">
+<style>
+  body { padding: 26px 30px; }
+  .tag { font-family: var(--font-body); font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: var(--fg-subtle); margin-bottom: 10px; }
+  .sub { font-family: var(--font-display); font-style: italic; font-size: 13px; color: var(--fg-muted); margin-bottom: 16px; }
+  table { width:100%; border-collapse: collapse; }
+  td { padding: 8px 0; border-bottom: 1px solid var(--rule); font-family: var(--font-mono); font-size: 11px; vertical-align: middle; }
+  td.role { color: var(--fg); font-weight: 500; font-family: var(--font-body); width: 26%; }
+  td.val { color: var(--fg-muted); width: 38%; }
+  td.note { color: var(--fg-subtle); font-family: var(--font-display); font-style: italic; font-size: 12px; }
+  td.swatch { width: 30px; }
+  td.swatch .c { width: 20px; height: 20px; border-radius: 2px; border: 1px solid var(--rule); }
+  .section { font-family: var(--font-body); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: var(--fg-subtle); padding: 14px 0 6px !important; border-bottom: 0 !important; }
+</style>
+</head>
+<body>
+  <div class="tag">Semantic tokens · what to reach for in components</div>
+  <div class="sub">raw palette values are ground truth; always reach through the alias.</div>
+  <table>
+    <tr><td class="section" colspan="4">Surfaces &amp; text</td></tr>
+    <tr><td class="swatch"><div class="c" style="background:#f4f1ea"></div></td><td class="role">--bg</td><td class="val">marble-100</td><td class="note">page background</td></tr>
+    <tr><td class="swatch"><div class="c" style="background:#faf8f3"></div></td><td class="role">--bg-raised</td><td class="val">marble-50</td><td class="note">cards, hover wash</td></tr>
+    <tr><td class="swatch"><div class="c" style="background:#ebe6db"></div></td><td class="role">--bg-sunken</td><td class="val">marble-200</td><td class="note">code blocks, insets</td></tr>
+    <tr><td class="swatch"><div class="c" style="background:#2a2620"></div></td><td class="role">--fg</td><td class="val">charcoal-900</td><td class="note">primary text</td></tr>
+    <tr><td class="swatch"><div class="c" style="background:#4f4a41"></div></td><td class="role">--fg-muted</td><td class="val">stone-700</td><td class="note">secondary text</td></tr>
+    <tr><td class="swatch"><div class="c" style="background:#8a8274"></div></td><td class="role">--fg-subtle</td><td class="val">stone-500</td><td class="note">dates, metadata</td></tr>
+    <tr><td class="swatch"><div class="c" style="background:#ddd5c5"></div></td><td class="role">--rule</td><td class="val">marble-300</td><td class="note">hairlines</td></tr>
+
+    <tr><td class="section" colspan="4">Primary · aegean (functional)</td></tr>
+    <tr><td class="swatch"><div class="c" style="background:#4a6670"></div></td><td class="role">--accent</td><td class="val">aegean-500</td><td class="note">links, CTAs, focus</td></tr>
+    <tr><td class="swatch"><div class="c" style="background:#3a525b"></div></td><td class="role">--accent-hover</td><td class="val">aegean-600</td><td class="note">link &amp; button hover</td></tr>
+    <tr><td class="swatch"><div class="c" style="background:#8aa0a8"></div></td><td class="role">--accent-wash</td><td class="val">aegean-300</td><td class="note">underline, focus-ring @ 28%</td></tr>
+
+    <tr><td class="section" colspan="4">Secondary · sage (quiet)</td></tr>
+    <tr><td class="swatch"><div class="c" style="background:#7a7a5e"></div></td><td class="role">--secondary</td><td class="val">sage-500</td><td class="note">status tags, in-progress</td></tr>
+    <tr><td class="swatch"><div class="c" style="background:#5f5f48"></div></td><td class="role">--secondary-hover</td><td class="val">sage-600</td><td class="note">—</td></tr>
+
+    <tr><td class="section" colspan="4">Ember · terracotta (character, not function)</td></tr>
+    <tr><td class="swatch"><div class="c" style="background:#b5714c"></div></td><td class="role">--ember</td><td class="val">terracotta-500</td><td class="note">wordmark italic, § glyph, hover → tip</td></tr>
+    <tr><td class="swatch"><div class="c" style="background:#9c5d3d"></div></td><td class="role">--ember-hover</td><td class="val">terracotta-600</td><td class="note">—</td></tr>
+    <tr><td class="swatch"><div class="c" style="background:#d6a085"></div></td><td class="role">--ember-wash</td><td class="val">terracotta-300</td><td class="note">rare — never on interactive</td></tr>
+  </table>
+</body>
+</html>

@@ -1,0 +1,446 @@
+/* =============================================================
+   Hestia Portfolio — Core Design Tokens
+   Muted classical. Marble, terracotta, warm charcoal.
+   Use variables — never hardcode hex values downstream.
+   ============================================================= */
+
+/* ---------- Font faces ---------- */
+/* EB Garamond — headings, display, emphasis */
+@font-face {
+  font-family: "EB Garamond";
+  src: url("/fonts/EBGaramond-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "EB Garamond";
+  src: url("/fonts/EBGaramond-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "EB Garamond";
+  src: url("/fonts/EBGaramond-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "EB Garamond";
+  src: url("/fonts/EBGaramond-MediumItalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "EB Garamond";
+  src: url("/fonts/EBGaramond-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "EB Garamond";
+  src: url("/fonts/EBGaramond-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "EB Garamond";
+  src: url("/fonts/EBGaramond-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Work Sans — body, UI, microcopy */
+@font-face {
+  font-family: "Work Sans";
+  src: url("/fonts/WorkSans-ExtraLight.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Work Sans";
+  src: url("/fonts/WorkSans-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Work Sans";
+  src: url("/fonts/WorkSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Work Sans";
+  src: url("/fonts/WorkSans-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Work Sans";
+  src: url("/fonts/WorkSans-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Work Sans";
+  src: url("/fonts/WorkSans-MediumItalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Work Sans";
+  src: url("/fonts/WorkSans-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Work Sans";
+  src: url("/fonts/WorkSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* ---------- Color — raw palette (ground truth) ----------
+     Everything downstream is a semantic alias of these. */
+  --marble-50:     #faf8f3;  /* lightest — page highlights, hover wash */
+  --marble-100:    #f4f1ea;  /* BASE BACKGROUND — "marble white" */
+  --marble-200:    #ebe6db;  /* card, subtle fills */
+  --marble-300:    #ddd5c5;  /* hairline rules, dividers */
+  --marble-400:    #c5baa4;  /* disabled, placeholder */
+
+  --stone-500:     #8a8274;  /* muted text, metadata */
+  --stone-700:     #4f4a41;  /* secondary text */
+  --charcoal-900:  #2a2620;  /* BASE TEXT — "warm charcoal" */
+  --charcoal-950:  #1a1714;  /* maximum contrast, rare */
+
+  --terracotta-500: #b5714c;  /* EMBER accent — wordmark, glyphs, hover details only */
+  --terracotta-600: #9c5d3d;  /* ember on hover */
+  --terracotta-300: #d6a085;  /* ember wash */
+
+  --ochre-500:     #a67c3a;   /* reserved one-off tag color; opt-in via tweak */
+  --ochre-600:     #8a6529;
+
+  --bone-100:      #e8e2d4;   /* secondary bg: sections, cards */
+  --aegean-500:    #4a6670;   /* PRIMARY accent — links, CTAs, focus */
+  --aegean-600:    #3a525b;   /* primary hover */
+  --aegean-300:    #8aa0a8;   /* primary wash */
+  --sage-500:      #7a7a5e;   /* secondary — in-progress, quiet highlights */
+  --sage-600:      #5f5f48;
+
+  /* ---------- Color — semantic aliases (use these) ----------
+     Split-temp system: aegean does the functional work (links, CTAs, focus);
+     terracotta returns only as an ember — wordmark italic, § glyphs,
+     hover arrow. Cool for function, warm for character. */
+  --bg:            var(--marble-100);
+  --bg-raised:     var(--marble-50);
+  --bg-sunken:     var(--marble-200);
+  --surface:       var(--bone-100);
+
+  --fg:            var(--charcoal-900);
+  --fg-muted:      var(--stone-700);
+  --fg-subtle:     var(--stone-500);
+  --fg-faint:      var(--marble-400);
+
+  --rule:          var(--marble-300);
+  --rule-strong:   var(--stone-500);
+
+  /* Primary accent — aegean. Everything interactive. */
+  --accent:        var(--aegean-500);
+  --accent-hover:  var(--aegean-600);
+  --accent-wash:   var(--aegean-300);
+
+  /* Secondary — sage. Use for status tags or quiet differentiation. */
+  --secondary:       var(--sage-500);
+  --secondary-hover: var(--sage-600);
+
+  /* Ember — terracotta. One-in-a-page decorative accent only.
+     Allowed: wordmark italic, § section glyph, hover-state arrow tip.
+     NOT allowed: links, CTAs, buttons, body emphasis. */
+  --ember:        var(--terracotta-500);
+  --ember-hover:  var(--terracotta-600);
+  --ember-wash:   var(--terracotta-300);
+
+  --selection-bg:  #cfdbe0;  /* aegean wash, solid */
+  --selection-fg:  var(--charcoal-900);
+}
+
+/* ---------- Dark mode — pigment-dark, not true dark ----------
+   Depth through saturation, not neutrality. The ground is a saturated
+   teal-ink in the aegean family: low L, meaningful C. If you squint and
+   see slate, it has failed the brief — pigment must read as pigment.
+   Same split-temp logic: aegean for function, terracotta as ember.
+   Auto-applies when the OS requests dark. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Surfaces — saturated teal-ink. Chroma is load-bearing. */
+    --bg:        #0c2833;  /* aegean L~22, C meaningful — teal pigment, not slate */
+    --bg-raised: #13333f;  /* one step warmer/brighter, still unmistakably teal */
+    --bg-sunken: #081e28;  /* deepest well; still chroma-carrying */
+    --surface:   #1a3f4c;
+
+    /* Text — cool off-white with a faint teal cast, never pure #fff */
+    --fg:        #e6eef0;
+    --fg-muted:  #9cb2b9;
+    --fg-subtle: #6a848d;
+    --fg-faint:  #3f5560;
+
+    --rule:        #1f3c47;  /* carries chroma; no neutral greys in this mode */
+    --rule-strong: #3a5966;
+
+    /* Aegean lifts to carry text weight on its own ground */
+    --accent:       #b8ccd4;
+    --accent-hover: #d6e2e8;
+    --accent-wash:  #2c4a55;
+
+    /* Ember softens one step — terracotta against teal-ink is plenty */
+    --ember:       #e0a58a;
+    --ember-hover: #ecb89f;
+    --ember-wash:  #5c3a2a;
+
+    /* Sage lifted + cooled to hold its own */
+    --secondary:       #a8b894;
+    --secondary-hover: #c4d2b0;
+
+    --selection-bg: #2c4a55;
+    --selection-fg: #e6eef0;
+
+    /* Focus ring — aegean at lifted opacity for dark grounds */
+    --shadow-focus: 0 0 0 3px rgba(184, 204, 212, 0.38);
+  }
+}
+
+/* ---------- Legacy theme overrides removed.
+   The system now commits to a single split-temp palette (B-prime):
+   aegean for function, terracotta as ember for character.
+   Keep raw palette tokens available so individual uses (e.g. a one-off
+   terracotta tag) can still reach them directly. */
+:root {
+
+  /* ---------- Typography — families ---------- */
+  --font-serif:    "EB Garamond", "Hoefler Text", "Garamond", "Apple Garamond", serif;
+  --font-sans:     "Work Sans", -apple-system, "Helvetica Neue", "Segoe UI", system-ui, sans-serif;
+  --font-mono:     ui-monospace, "SF Mono", "Menlo", "Consolas", monospace;
+
+  --font-display:  var(--font-serif);    /* hero, page titles */
+  --font-body:     var(--font-sans);     /* running prose, UI */
+
+  /* ---------- Typography — scale
+     Based on 16px base × ~1.25 minor-third, classical proportions.
+     Display sizes step in larger ratios for hierarchy. */
+  --step--2: 0.75rem;   /* 12px — eyebrows, footnotes (min size) */
+  --step--1: 0.875rem;  /* 14px — captions, meta */
+  --step-0:  1rem;      /* 16px — body default */
+  --step-1:  1.125rem;  /* 18px — large body, lede */
+  --step-2:  1.375rem;  /* 22px — h4 */
+  --step-3:  1.75rem;   /* 28px — h3 */
+  --step-4:  2.25rem;   /* 36px — h2 */
+  --step-5:  3rem;      /* 48px — h1 */
+  --step-6:  4.5rem;    /* 72px — hero display */
+  --step-7:  6rem;      /* 96px — wordmark, large hero */
+
+  /* ---------- Typography — weights ---------- */
+  --weight-serif-regular: 400;
+  --weight-serif-medium:  500;
+  --weight-serif-semibold: 600;
+  --weight-serif-bold:    700;
+  --weight-sans-light:    300;
+  --weight-sans-regular:  400;
+  --weight-sans-medium:   500;
+  --weight-sans-semibold: 600;
+
+  /* ---------- Typography — line height ---------- */
+  --leading-tight:  1.15;  /* display */
+  --leading-snug:   1.3;   /* headings */
+  --leading-normal: 1.55;  /* body */
+  --leading-loose:  1.75;  /* long-form prose */
+
+  /* ---------- Typography — tracking ---------- */
+  --tracking-tighter: -0.02em;
+  --tracking-tight:   -0.01em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.04em;
+  --tracking-wider:   0.12em;  /* small-caps / eyebrow */
+
+  /* ---------- Spacing — 4px baseline grid ---------- */
+  --space-1:  0.25rem;  /*  4px */
+  --space-2:  0.5rem;   /*  8px */
+  --space-3:  0.75rem;  /* 12px */
+  --space-4:  1rem;     /* 16px */
+  --space-5:  1.5rem;   /* 24px */
+  --space-6:  2rem;     /* 32px */
+  --space-7:  3rem;     /* 48px */
+  --space-8:  4rem;     /* 64px */
+  --space-9:  6rem;     /* 96px */
+  --space-10: 8rem;     /* 128px — section rhythm */
+  --space-11: 12rem;    /* 192px — page top/bottom */
+
+  /* ---------- Layout ---------- */
+  --measure:       60ch;        /* body text column */
+  --measure-wide:  72ch;
+  --content-max:   42rem;       /* 672px — reading column */
+  --page-max:      64rem;       /* 1024px — page container */
+
+  /* ---------- Radii — minimal, classical ---------- */
+  --radius-none: 0;
+  --radius-sm:   2px;
+  --radius-md:   3px;          /* default — very restrained */
+  --radius-pill: 999px;        /* avoid; only for tags if ever */
+
+  /* ---------- Borders ---------- */
+  --border-hairline: 1px solid var(--rule);
+  --border-strong:   1px solid var(--rule-strong);
+
+  /* ---------- Shadows — almost nothing. Ink, not plastic. ---------- */
+  --shadow-none: none;
+  --shadow-sm:   0 1px 0 0 var(--rule);                      /* single rule */
+  --shadow-md:   0 1px 2px 0 rgba(42, 38, 32, 0.06);         /* whisper */
+  --shadow-focus: 0 0 0 3px rgba(74, 102, 112, 0.28);        /* a11y focus — aegean */
+
+  /* ---------- Motion — brief, linear-ish, quiet ---------- */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out:      cubic-bezier(0, 0, 0.2, 1);
+  --dur-fast:      120ms;
+  --dur-base:      200ms;
+  --dur-slow:      320ms;
+}
+
+/* =============================================================
+   Semantic element defaults — opt in by loading this file.
+   Match the typographic intent from the tokens above.
+   ============================================================= */
+
+html {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  font-weight: var(--weight-sans-regular);
+}
+
+::selection {
+  background: var(--selection-bg);
+  color: var(--selection-fg);
+}
+
+/* Headings — EB Garamond, italic allowed for emphasis */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--fg);
+  font-weight: var(--weight-serif-regular);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+  margin: 0;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--step-5);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tighter);
+}
+h2 {
+  font-size: var(--step-4);
+  line-height: var(--leading-tight);
+}
+h3 { font-size: var(--step-3); }
+h4 { font-size: var(--step-2); font-weight: var(--weight-serif-medium); }
+h5 { font-size: var(--step-1); font-weight: var(--weight-serif-medium); }
+h6 {
+  font-size: var(--step--1);
+  font-family: var(--font-body);
+  font-weight: var(--weight-sans-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--fg-muted);
+}
+
+/* Body prose */
+p {
+  margin: 0 0 var(--space-4);
+  max-width: var(--measure);
+  text-wrap: pretty;
+}
+
+/* Links — terracotta, subtle underline */
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: var(--accent-wash);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color var(--dur-fast) var(--ease-standard),
+              text-decoration-color var(--dur-fast) var(--ease-standard);
+}
+a:hover {
+  color: var(--accent-hover);
+  text-decoration-color: var(--accent);
+}
+a:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+  border-radius: var(--radius-sm);
+}
+
+/* Emphasis — italic serif is a signature move */
+em, i { font-style: italic; }
+strong, b { font-weight: var(--weight-sans-semibold); }
+
+/* Monospace */
+code, kbd, samp, pre {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--bg-sunken);
+  padding: 0.1em 0.35em;
+  border-radius: var(--radius-sm);
+}
+
+/* Horizontal rule — classical hairline */
+hr {
+  border: 0;
+  border-top: var(--border-hairline);
+  margin: var(--space-7) 0;
+}
+
+/* Small caps / eyebrow utility */
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--step--1);
+  font-weight: var(--weight-sans-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--fg-subtle);
+}
+
+/* Lede — oversized opening paragraph in Garamond italic */
+.lede {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-style: italic;
+  font-weight: var(--weight-serif-regular);
+  line-height: var(--leading-normal);
+  color: var(--fg-muted);
+  max-width: var(--measure-wide);
+}

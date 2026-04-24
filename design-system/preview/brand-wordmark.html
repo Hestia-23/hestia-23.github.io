@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css?v=4">
+<style>
+  body { padding: 26px 30px; display:flex; flex-direction:column; gap: 18px; }
+  .tag { font-family: var(--font-body); font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: var(--fg-subtle); margin-bottom: 10px; }
+  .sub { font-family: var(--font-display); font-style: italic; font-size: 12px; color: var(--fg-subtle); margin-left: 8px; }
+  .row { display:flex; align-items: center; gap: 32px; }
+  .wordmark { font-family: var(--font-display); font-style: italic; font-weight: 500; color: var(--ember); line-height: 1; }
+  .wordmark.mono { color: var(--fg); }
+  .big { font-size: 72px; letter-spacing: -0.02em; }
+  .med { font-size: 32px; }
+  .small { font-size: 18px; }
+  .glyph { font-family: var(--font-display); font-style: italic; font-size: 28px; color: var(--ember); }
+  .key { opacity: 0.7; }
+</style>
+</head>
+<body>
+  <div>
+    <div class="tag">Wordmark <span class="sub">— EB Garamond italic. terracotta ember is its signature color.</span></div>
+    <div class="row">
+      <div class="wordmark big">hestia</div>
+      <div class="wordmark med">hestia</div>
+      <div class="wordmark small">hestia</div>
+      <div class="wordmark mono small" style="color: var(--fg)">hestia <span style="color:var(--fg-subtle); font-size:11px; font-family:var(--font-body); font-style:normal">(mono fallback — charcoal on light only)</span></div>
+    </div>
+  </div>
+  <div>
+    <div class="tag">Section glyph <span class="sub">— § in ember. marks sectional breaks in prose.</span></div>
+    <div class="row">
+      <span class="glyph">§</span>
+      <span style="font-family:var(--font-display); font-style:italic; color:var(--fg-subtle); font-size:14px">one per section, centered above the rule</span>
+    </div>
+  </div>
+  <div>
+    <div class="tag">Ornament <span class="sub">— greek key. quiet section terminator, never a logo.</span></div>
+    <div class="row">
+      <div class="key"><img src="../assets/greek-key.svg" width="180" alt="greek key"></div>
+      <div style="font-family:var(--font-display); font-style:italic; color:var(--fg-subtle); font-size:14px">used to close, not announce</div>
+    </div>
+  </div>
+</body>
+</html>

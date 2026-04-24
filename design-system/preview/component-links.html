@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css?v=4">
+<style>
+  body { padding: 26px 30px; }
+  .tag { font-family: var(--font-body); font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: var(--fg-subtle); margin-bottom: 12px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .cell { padding: 14px; background: var(--bg-raised); border: 1px solid var(--rule); border-radius: 2px; }
+  .state { font-family: var(--font-mono); font-size: 10px; color: var(--fg-subtle); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.12em; }
+  a.demo { color: var(--accent); text-decoration: underline; text-decoration-color: var(--accent-wash); text-underline-offset: 0.2em; font-size: 15px; }
+  a.hover { color: var(--accent-hover); text-decoration-color: var(--accent); }
+  a.focus { outline: none; box-shadow: 0 0 0 3px rgba(74,102,112,.28); border-radius: 2px; }
+  a.visited { color: #3a525b; text-decoration-color: #9eb2b9; }
+  .note { font-family: var(--font-display); font-style: italic; font-size: 12px; color: var(--fg-subtle); margin-top: 14px; }
+</style>
+</head>
+<body>
+  <div class="tag">Link states — aegean underline always present; focus ring is aegean at 28%</div>
+  <div class="grid">
+    <div class="cell"><div class="state">default</div><a href="#" class="demo">read the article</a></div>
+    <div class="cell"><div class="state">hover</div><a href="#" class="demo hover">read the article</a></div>
+    <div class="cell"><div class="state">focus</div><a href="#" class="demo focus">read the article</a></div>
+    <div class="cell"><div class="state">visited</div><a href="#" class="demo visited">read the article</a></div>
+    <div class="cell"><div class="state">inline in prose</div><div style="font-size:14px; color:var(--fg)">built with <a href="#" class="demo" style="font-size:14px">astro 6</a> and typescript.</div></div>
+    <div class="cell"><div class="state">trailing arrow</div><a href="#" class="demo" style="text-decoration:none">view all projects <span style="color:var(--ember)">→</span></a></div>
+  </div>
+  <div class="note">the trailing → is the one place ember (terracotta) appears alongside a link — a single warm tip on a cool line.</div>
+</body>
+</html>
