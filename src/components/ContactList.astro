@@ -1,18 +1,35 @@
 ---
-import type { ContactItem } from '../data/contact';
+import type { ContactItem, ContactIconName } from '../data/contact';
+import Mail from './icons/Mail.astro';
+import Github from './icons/brand/Github.astro';
+import GithubSponsors from './icons/brand/GithubSponsors.astro';
+import X from './icons/brand/X.astro';
 
 interface Props {
   items: ContactItem[];
 }
 
 const { items } = Astro.props;
+
+const icons: Record<ContactIconName, any> = {
+  mail: Mail,
+  github: Github,
+  sponsors: GithubSponsors,
+  x: X,
+};
 ---
 
 <ul class="contact-list">
-  {items.map((i) => (
-    <li>
-      <span class="contact-kind">{i.kind}</span>
-      <a class="contact-value" href={i.href}>{i.value}</a>
-    </li>
-  ))}
+  {items.map((i) => {
+    const Icon = icons[i.icon];
+    return (
+      <li>
+        <span class="contact-kind">
+          <Icon />
+          {i.kind}
+        </span>
+        <a class="contact-value" href={i.href}>{i.value}</a>
+      </li>
+    );
+  })}
 </ul>
