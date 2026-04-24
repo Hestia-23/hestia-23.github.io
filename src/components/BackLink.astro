@@ -1,0 +1,10 @@
+---
+interface Props {
+  href?: string;
+  label?: string;
+}
+
+const { href = '/projects/', label = '← all projects' } = Astro.props;
+---
+
+<a class="back-link" href={href}>{label}</a>

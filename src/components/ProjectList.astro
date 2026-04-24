@@ -1,0 +1,14 @@
+---
+import ProjectRow from './ProjectRow.astro';
+import type { Project } from '../data/projects';
+
+interface Props {
+  projects: Project[];
+}
+
+const { projects } = Astro.props;
+---
+
+<div class="project-list">
+  {projects.map((p) => <ProjectRow project={p} />)}
+</div>

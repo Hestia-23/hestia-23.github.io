@@ -1,0 +1,32 @@
+---
+import type { Project } from '../data/projects';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<a class="project-row" href={`/projects/${project.slug}/`}>
+  <div class="project-title">
+    {project.title}{project.subtitle && <>: <em>{project.subtitle}</em></>}
+  </div>
+  <div class="project-date">{project.date}</div>
+  <div class="project-arrow">→</div>
+  <div class="project-desc">{project.description}</div>
+  <div class="project-meta">
+    {project.stack.map((s, i) => (
+      <>
+        {i > 0 && <span class="sep">·</span>}
+        <span>{s}</span>
+      </>
+    ))}
+    {project.status && (
+      <>
+        <span class="sep">·</span>
+        <span>{project.status}</span>
+      </>
+    )}
+  </div>
+</a>

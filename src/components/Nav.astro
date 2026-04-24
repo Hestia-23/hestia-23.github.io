@@ -1,0 +1,27 @@
+---
+const pathname = Astro.url.pathname;
+
+const isActive = (slug: string): boolean => {
+  if (slug === 'home') return pathname === '/' || pathname === '';
+  return pathname.startsWith(`/${slug}`);
+};
+
+const links = [
+  { slug: 'home', href: '/', label: 'home' },
+  { slug: 'about', href: '/about/', label: 'about' },
+  { slug: 'projects', href: '/projects/', label: 'projects' },
+  { slug: 'contact', href: '/contact/', label: 'contact' },
+];
+---
+
+<nav class="nav">
+  <a href="/" class="nav-mark">hestia</a>
+  <div class="nav-links">
+    {links.map((l) => (
+      <a
+        href={l.href}
+        class:list={['nav-link', { active: isActive(l.slug) }]}
+      >{l.label}</a>
+    ))}
+  </div>
+</nav>

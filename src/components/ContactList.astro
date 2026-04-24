@@ -1,0 +1,18 @@
+---
+import type { ContactItem } from '../data/contact';
+
+interface Props {
+  items: ContactItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<ul class="contact-list">
+  {items.map((i) => (
+    <li>
+      <span class="contact-kind">{i.kind}</span>
+      <a class="contact-value" href={i.href}>{i.value}</a>
+    </li>
+  ))}
+</ul>
