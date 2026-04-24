@@ -1,10 +1,33 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import ProjectList from '../components/ProjectList.astro';
+import { PROJECTS } from '../data/projects';
 ---
 
 <Layout title="hestia">
-  <main>
-    <h1>hestia</h1>
-    <!-- sections assembled in a later task from design-system/ui_kits/portfolio/Home.jsx -->
-  </main>
+  <Hero />
+  <Section eyebrow="§ recent" title="selected work">
+    <ProjectList projects={PROJECTS.slice(0, 3)} />
+    <p class="all-projects-wrap">
+      <a href="/projects/" class="all-projects">all projects →</a>
+    </p>
+  </Section>
 </Layout>
+
+<style>
+  .all-projects-wrap {
+    margin-top: var(--space-6);
+  }
+  .all-projects {
+    color: var(--accent);
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .all-projects:hover {
+    color: var(--accent-hover);
+  }
+</style>

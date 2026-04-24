@@ -1,0 +1,35 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Section from '../../components/Section.astro';
+import BackLink from '../../components/BackLink.astro';
+import { PROJECTS, type Project } from '../../data/projects';
+
+export function getStaticPaths() {
+  return PROJECTS.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<Layout title={`hestia · ${project.title}`}>
+  <Section eyebrow={`§ ${project.date}`} title={project.title}>
+    <BackLink href="/projects/" />
+    <div class="prose">
+      {project.subtitle && <p><em>{project.subtitle}.</em></p>}
+      {project.body.map((para) => <p>{para}</p>)}
+    </div>
+    {(project.url || project.repoUrl) && (
+      <div class="detail-ctas">
+        {project.url && <a class="btn btn-primary" href={project.url}>visit site</a>}
+        {project.repoUrl && <a class="btn btn-ghost" href={project.repoUrl}>view repo</a>}
+      </div>
+    )}
+  </Section>
+</Layout>

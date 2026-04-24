@@ -1,10 +1,21 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Section from '../components/Section.astro';
+import ContactList from '../components/ContactList.astro';
+import { CONTACT } from '../data/contact';
 ---
 
 <Layout title="hestia · contact">
-  <main>
-    <h1>contact</h1>
-    <!-- sections assembled in a later task from design-system/ui_kits/portfolio/AboutContact.jsx -->
-  </main>
+  <Section eyebrow="§ contact" title="one address, read weekly.">
+    <div class="prose contact-prose">
+      <p>email is the address i actually read. github is where the work lives.</p>
+    </div>
+    <ContactList items={CONTACT} />
+  </Section>
 </Layout>
+
+<style>
+  .contact-prose {
+    margin-bottom: var(--space-7);
+  }
+</style>

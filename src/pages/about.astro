@@ -1,10 +1,26 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Section from '../components/Section.astro';
 ---
 
 <Layout title="hestia · about">
-  <main>
-    <h1>about</h1>
-    <!-- sections assembled in a later task from design-system/ui_kits/portfolio/AboutContact.jsx -->
-  </main>
+  <Section eyebrow="§ about" title="frontend, volunteer.">
+    <div class="about-grid">
+      <aside class="about-aside">
+        <dl>
+          <dt>stack</dt>
+          <dd>astro 6, typescript strict, vanilla css</dd>
+          <dt>currently</dt>
+          <dd>community manager @ gamevox</dd>
+          <dt>learning</dt>
+          <dd>full stack, cybersecurity, data analytics</dd>
+        </dl>
+      </aside>
+      <div class="prose">
+        <p>i'm a frontend developer. i build ui components, layouts, and design systems.</p>
+        <p>most of my work is volunteer. it happens on gamevox, a privacy-focused voice chat platform, where i design and prototype interface mockups, contribute to community resources, and shape the user experience.</p>
+        <p>what i ship, i'm willing to defend. privacy-first by default; no trackers, no analytics, no cookies.</p>
+      </div>
+    </div>
+  </Section>
 </Layout>

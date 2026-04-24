@@ -48,3 +48,28 @@ Wiring the `design-system/` package into the Astro site. Tokens, fonts, favicon,
 ### Resolved
 - Design system voice corrections applied to `design-system/README.md` before the integration. Em-dashes out; banned-buzzword list extended with "delve", "navigate the landscape", "it's worth noting"; new "Direct, lead with the answer" rule added. Committed as `c978a48` ahead of the integration commit, so the in-repo rules match the owner's actual writing voice before any page scaffold sees them.
 - Commit structure revised mid-task on the user's call: README voice correction as its own commit (first), then the integration as a single follow-up commit carrying the design-system source and the Astro wiring together. Previously planned as three commits; collapsed to two because "two separate commits, not one" was the explicit instruction, and the README-vs-integration split is the one that matters.
+
+---
+
+## 2026-04-24 (continued, jsx port)
+
+### What I'm doing
+Turning the four empty scaffold pages into real portfolio pages by porting the ui_kit's React/JSX reference implementations into Astro components, data modules, and static routes.
+
+### Decisions
+- **app.jsx + components.jsx + portfolio.css is the canonical source.** The ui_kit ships two parallel implementations. Reading index.html's script load order and the window-global collision pattern, app.jsx's page functions override same-named functions from Home.jsx / Projects.jsx / AboutContact.jsx. components.jsx is the active class-based primitive set; Primitives.jsx is an earlier inline-styled alternative. Only the canonical set gets ported. Dead files and tweaks-panel.jsx (design-tool artifact with postMessage protocol) skipped.
+- **Global component stylesheet, not scoped per component.** Earlier task preference was scoped. For the ported components, the class selectors in portfolio.css are the authoritative surface (with sibling combinators like `.section + .section` and positional ones like `.project-row:first-child`). Keeping them in one `src/styles/components.css` imported globally preserves the design-system surface exactly and keeps diffs against the ui_kit source legible. Two one-off page styles go in scoped `<style>` blocks (index's all-projects link, contact's prose margin). Revisit if scoping becomes useful later.
+- **Routing is file-based plus one dynamic route.** `src/pages/projects/[slug].astro` with `getStaticPaths()` emits one pre-rendered HTML page per project. BackLink is a real `<a href="/projects/">`, not a stateful button. ProjectRow is an `<a>` too. No JS, no state machine, no client directives.
+- **Data lives in src/data/ TS modules.** Plain typed arrays (Project[], ContactItem[]) with a type export. Not content collections; three short entries with string-array bodies do not warrant MDX plus schema.
+- **Three projects, not four.** Owner confirmed the real projects are hearth-ui, discord-alternatives, and gamevox. The ui_kit's privacypack and sdv-summary were placeholder inventions; dropped. GameVox is framed honestly as a platform the owner volunteers on (community manager + ui contributor), not a project they own.
+- **Real email wired.** `hestia.tu2cy@8alias.com` (an alias address) as a `mailto:` link, in the ContactList. No placeholder TODOs in the built site.
+- **About voice drawn from the Sponsors intro.** Cleaned to match the design system's voice rules (no emoji, no em-dashes, no banned buzzwords, no exclamation marks, lowercase). GameVox and the privacy-focused voice chat platform named explicitly per owner direction.
+- **Nav derives active state from `Astro.url.pathname`, not a prop.** Zero JS. Every link is a real anchor.
+- **Button styles live in components.css under `.btn .btn-primary .btn-ghost`.** The ui_kit used inline styles via Primitives.jsx's `ButtonPrimary`/`ButtonGhost`; the canonical app.jsx path actually doesn't render buttons on the detail page, so I added a small class-based set to match the intent (visit site / view repo CTAs, only rendered when the project has a `url` or `repoUrl`).
+- **Footer content: `© 2026 · source · § · built with astro`.** RSS dropped (no blog to feed); kept the three-column flex layout with the `§` ornament so the design-system rhythm survives.
+
+### Stuck on
+- (none)
+
+### Resolved
+- Four-page portfolio is no longer empty. 8 routes build (`/`, `/about/`, `/projects/`, three `/projects/<slug>/` pages, `/contact/`, plus Astro's 404 default). Nav, Hero, ProjectList, ContactList, BackLink, Footer all on screen. Real email, real repo links, real GameVox link.
