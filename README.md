@@ -1,43 +1,47 @@
-# Astro Starter Kit: Minimal
+# hestia-23.github.io
 
-```sh
-npm create astro@latest -- --template minimal
-```
+personal portfolio. astro 6, typescript strict, vanilla css, deployed to github pages. live at https://hestia-23.github.io.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## structure
 
-## 🚀 Project Structure
+- `src/`
+  - `pages/` — file-based routes. `index.astro`, `about.astro`, `projects.astro`, `projects/[slug].astro` (one page per project, pre-rendered), `contact.astro`.
+  - `components/` — nav, hero, section, project row/list, contact list, footer, back link.
+  - `components/icons/` — lucide icons (chevrons-left, chevrons-right, mail). brand marks live under `components/icons/brand/`.
+  - `data/` — `projects.ts`, `contact.ts`. typed, hand-edited.
+  - `layouts/Layout.astro` — single layout; wraps every page with nav + footer and imports the stylesheets.
+  - `styles/tokens.css` — design-system tokens (colors, type, space, motion). imported globally.
+  - `styles/components.css` — class-based component rules (`.nav`, `.hero`, `.section`, `.project-row`, `.contact-list`, `.btn*`, `.icon`). imported globally.
+- `public/` — static assets served at `/`. fonts at `/fonts/`, favicon at `/favicon.svg`.
+- `design-system/` — the authoritative brand brief and tokens source. see `design-system/README.md`. the astro site consumes it; it is not a build artifact.
+- `scrapbook.md` — decisions, dead ends, taste calls, written as work happens. start here when opening the repo after a break.
 
-Inside of your Astro project, you'll see the following folders and files:
+## local dev
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+requires node >=22.12 and npm.
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+| command | action |
+| ------- | ------ |
+| `npm install` | install dependencies |
+| `npm run dev` | dev server at http://localhost:4321 |
+| `npm run build` | static build to `dist/` |
+| `npm run preview` | serve the build locally |
+| `npm run astro ...` | astro cli passthrough |
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+zero client-side javascript ships. every interaction is css (hover, focus, `prefers-color-scheme` dark mode, `prefers-reduced-motion`).
 
-Any static assets, like images, can be placed in the `public/` directory.
+## deploy
 
-## 🧞 Commands
+github actions handles it. `.github/workflows/deploy.yml` fires on push to `master` (and manual `workflow_dispatch`). the build runs via `withastro/action@v6`; deploy via `actions/deploy-pages@v5`.
 
-All commands are run from the root of the project, from a terminal:
+one-time repo setting: settings → pages → source must be "github actions", not a branch.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## design system
 
-## 👀 Want to learn more?
+read `design-system/README.md` for the full brief: voice, color, typography, space, motion, iconography. the rules there are load-bearing for anything that lands in `src/`.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+quick policy summary:
+- simple icons for brand marks (astro, html5, css, javascript, typescript, github, github sponsors, x, etc.).
+- lucide (1.5 stroke, 1em) for every other icon.
+- no em-dashes, no emoji, no exclamation marks, no banned buzzwords. lowercase everywhere except proper nouns and the wordmark.
+- dark mode is automatic via `prefers-color-scheme`. no toggle.
