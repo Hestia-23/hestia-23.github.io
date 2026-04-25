@@ -4,14 +4,16 @@ import HearthMascot from './HearthMascot.astro';
 ---
 
 <section class="hero">
-  <div class="hero-lockup">
-    <HearthMascot size={96} class="hero-mascot" />
+  <div class="hero-text">
     <h1 class="hero-wordmark">hestia</h1>
+    <p class="hero-lede">
+      I build UI components, layouts, and design systems.
+    </p>
+    <a href="/projects/" class="hero-cta">
+      All projects<ChevronsRight class="arrow" />
+    </a>
   </div>
-  <p class="hero-lede">
-    I build UI components, layouts, and design systems.
-  </p>
-  <a href="/projects/" class="hero-cta">
-    All projects<ChevronsRight class="arrow" />
-  </a>
+  <div class="hero-figure">
+    <HearthMascot class="hero-mascot" />
+  </div>
 </section>

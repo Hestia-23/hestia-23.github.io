@@ -43,14 +43,21 @@
 .hero {
   padding: var(--space-11) 0 var(--space-10);
   border-bottom: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-8);
+  align-items: center;
 }
-.hero-lockup {
+.hero-text { min-width: 0; }
+.hero-figure {
   display: flex;
-  align-items: flex-end;
-  gap: var(--space-5);
-  margin: 0 0 var(--space-6);
+  justify-content: center;
+  align-items: center;
 }
-.hero-mascot { flex-shrink: 0; }
+.hero-mascot {
+  width: clamp(220px, 32vw, 360px);
+  height: clamp(220px, 32vw, 360px);
+}
 .hero-wordmark {
   font-family: var(--font-display);
   font-style: italic;
@@ -59,7 +66,7 @@
   line-height: 1;
   letter-spacing: -0.03em;
   color: var(--ember);
-  margin: 0;
+  margin: 0 0 var(--space-6);
 }
 .hero-lede {
   font-family: var(--font-display);
@@ -547,5 +554,10 @@
   .about-grid { grid-template-columns: 1fr; gap: var(--space-6); }
   .nav { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
   .nav-links { gap: var(--space-5); }
-  .hero { padding: var(--space-9) 0 var(--space-8); }
+  .hero {
+    padding: var(--space-9) 0 var(--space-8);
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+  .hero-figure { order: 1; }
 }
