@@ -22,3 +22,8 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# local working files (not for public repo)
+.scrapbook.md
+.cont.md
+design-system/
