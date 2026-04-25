@@ -27,7 +27,7 @@ export const CONTACT: ContactItem[] = [
     icon: 'sponsors',
   },
   {
-    kind: 'X',
+    kind: 'Formerly Twitter',
     value: '@alethia__23',
     href: 'https://x.com/alethia__23',
     icon: 'x',
