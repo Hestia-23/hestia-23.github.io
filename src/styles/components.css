@@ -209,16 +209,57 @@
   margin: var(--space-2) 0 0;
 }
 
-/* ---------- Contact ---------- */
-.contact-list { list-style: none; padding: 0; margin: 0; max-width: 38rem; }
-.contact-list li {
+/* ---------- Contact — door-ajar hover ----------
+   Each row is a panel hinged on its left edge. On hover/focus, the
+   panel pivots forward at the hinge so the right edge tips toward
+   the viewer. Shadow falls toward the hinge; an inset highlight
+   catches the inner edge as the panel separates from the wall. */
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 38rem;
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+}
+.contact-item {
+  position: relative;
+  z-index: 1;
+  display: block;
+  background: var(--bg-raised);
+  border-top: 1px solid var(--rule);
+  transform-style: preserve-3d;
+  transform-origin: left center;
+  transform: rotateY(0deg) translateZ(0);
+  transition:
+    transform  var(--door-duration) var(--door-ease),
+    box-shadow var(--door-duration) var(--door-ease),
+    background var(--door-duration) var(--door-ease);
+  box-shadow: 0 0 0 0 transparent;
+  backface-visibility: hidden;
+}
+.contact-item:last-child { border-bottom: 1px solid var(--rule); }
+.contact-item:hover,
+.contact-item:focus-within {
+  z-index: 2;
+  transform: rotateY(var(--door-rotate)) translateZ(var(--door-translate));
+  background: var(--surface);
+  box-shadow:
+    -16px 14px 36px rgba(0, 0, 0, 0.45),
+    inset 2px 0 0 rgba(184, 204, 212, 0.10);
+}
+.contact-item a {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  padding: var(--space-4) 0;
-  border-bottom: 1px solid var(--rule);
+  gap: var(--space-5);
+  padding: var(--space-4) var(--space-5) var(--space-4) var(--space-4);
+  text-decoration: none;
+  color: inherit;
 }
-.contact-list li:first-child { border-top: 1px solid var(--rule); }
+.contact-item a:focus { outline: none; }
+.contact-item a:focus-visible { box-shadow: inset 0 0 0 2px var(--accent); }
+
 .contact-kind {
   font-family: var(--font-body);
   font-size: 13px;
@@ -228,16 +269,65 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
+  flex-shrink: 0;
 }
+.contact-kind svg {
+  width: 16px;
+  height: 16px;
+  color: var(--fg-muted);
+  transition: color var(--door-duration) var(--door-ease);
+}
+.contact-item:hover .contact-kind svg,
+.contact-item:focus-within .contact-kind svg {
+  color: var(--ember);
+}
+
 .contact-value {
   font-family: var(--font-display);
   font-style: italic;
   font-size: var(--step-2);
   color: var(--accent);
-  text-decoration: none;
-  transition: color var(--dur-fast);
+  text-align: right;
+  word-break: break-all;
+  min-width: 0;
+  transition: color var(--door-duration) var(--door-ease);
 }
-.contact-value:hover { color: var(--accent-hover); }
+.contact-item:hover .contact-value,
+.contact-item:focus-within .contact-value {
+  color: var(--accent-hover);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-item {
+    transition:
+      background 200ms linear,
+      box-shadow 200ms linear;
+  }
+  .contact-item:hover,
+  .contact-item:focus-within {
+    transform: none;
+    box-shadow: inset 2px 0 0 var(--ember);
+  }
+}
+
+@media (hover: none) {
+  .contact-item:hover {
+    transform: none;
+    box-shadow: none;
+    background: var(--bg-raised);
+  }
+  .contact-item:hover .contact-kind svg { color: var(--fg-muted); }
+  .contact-item:hover .contact-value { color: var(--accent); }
+}
+
+@media (max-width: 36rem) {
+  .contact-item a {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+  .contact-value { text-align: left; font-size: var(--step-1); }
+}
 
 /* ---------- Footer ---------- */
 .footer {

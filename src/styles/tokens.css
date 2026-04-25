@@ -245,6 +245,15 @@
   --dur-fast:      120ms;
   --dur-base:      200ms;
   --dur-slow:      320ms;
+
+  /* ---------- Door-ajar interaction (contact rows) ----------
+     Each contact row hinges on its left edge and tips toward the
+     viewer on hover/focus. -10° is "ajar" — clearly cracked, but
+     the panel still mostly faces the reader. */
+  --door-rotate:    -10deg;
+  --door-translate: 12px;
+  --door-duration:  380ms;
+  --door-ease:      cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 /* =============================================================

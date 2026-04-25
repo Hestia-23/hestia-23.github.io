@@ -23,12 +23,14 @@ const icons: Record<ContactIconName, any> = {
   {items.map((i) => {
     const Icon = icons[i.icon];
     return (
-      <li>
-        <span class="contact-kind">
-          <Icon />
-          {i.kind}
-        </span>
-        <a class="contact-value" href={i.href}>{i.value}</a>
+      <li class="contact-item">
+        <a href={i.href}>
+          <span class="contact-kind">
+            <Icon />
+            {i.kind}
+          </span>
+          <span class="contact-value">{i.value}</span>
+        </a>
       </li>
     );
   })}
