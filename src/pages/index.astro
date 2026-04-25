@@ -3,7 +3,6 @@ import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import Section from '../components/Section.astro';
 import ProjectList from '../components/ProjectList.astro';
-import ChevronsRight from '../components/icons/ChevronsRight.astro';
 import { PROJECTS } from '../data/projects';
 ---
 
@@ -11,24 +10,5 @@ import { PROJECTS } from '../data/projects';
   <Hero />
   <Section eyebrow="§ Recent" title="Selected work">
     <ProjectList projects={PROJECTS.slice(0, 3)} />
-    <p class="all-projects-wrap">
-      <a href="/projects/" class="all-projects">All projects <ChevronsRight /></a>
-    </p>
   </Section>
 </Layout>
-
-<style>
-  .all-projects-wrap {
-    margin-top: var(--space-6);
-  }
-  .all-projects {
-    color: var(--accent);
-    text-decoration: none;
-    font-family: var(--font-body);
-    font-size: 14px;
-    font-weight: 500;
-  }
-  .all-projects:hover {
-    color: var(--accent-hover);
-  }
-</style>
