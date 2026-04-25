@@ -7,12 +7,12 @@ import ChevronsRight from '../components/icons/ChevronsRight.astro';
 import { PROJECTS } from '../data/projects';
 ---
 
-<Layout title="hestia">
+<Layout title="Hestia">
   <Hero />
-  <Section eyebrow="§ recent" title="selected work">
+  <Section eyebrow="§ Recent" title="Selected work">
     <ProjectList projects={PROJECTS.slice(0, 3)} />
     <p class="all-projects-wrap">
-      <a href="/projects/" class="all-projects">all projects <ChevronsRight /></a>
+      <a href="/projects/" class="all-projects">All projects <ChevronsRight /></a>
     </p>
   </Section>
 </Layout>

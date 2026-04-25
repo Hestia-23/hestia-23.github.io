@@ -18,7 +18,7 @@ interface Props {
 const { project } = Astro.props;
 ---
 
-<Layout title={`hestia · ${project.title}`}>
+<Layout title={`Hestia · ${project.title}`}>
   <Section eyebrow={`§ ${project.date}`} title={project.title}>
     <BackLink href="/projects/" />
     <div class="prose">
@@ -27,8 +27,8 @@ const { project } = Astro.props;
     </div>
     {(project.url || project.repoUrl) && (
       <div class="detail-ctas">
-        {project.url && <a class="btn btn-primary" href={project.url}>visit site</a>}
-        {project.repoUrl && <a class="btn btn-ghost" href={project.repoUrl}>view repo</a>}
+        {project.url && <a class="btn btn-primary" href={project.url}>Visit site</a>}
+        {project.repoUrl && <a class="btn btn-ghost" href={project.repoUrl}>View repo</a>}
       </div>
     )}
   </Section>

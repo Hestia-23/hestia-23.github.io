@@ -8,51 +8,51 @@ export type Project = {
   body: string[];
   url?: string;
   repoUrl?: string;
-  status?: 'active' | 'in progress' | 'archived' | 'volunteer';
+  status?: 'Active' | 'In progress' | 'Archived' | 'Volunteer';
 };
 
 export const PROJECTS: Project[] = [
   {
     slug: 'hearth-ui',
-    title: 'hearth-ui',
-    date: 'ongoing',
+    title: 'Hearth UI',
+    date: 'Ongoing',
     description:
-      'frontend ui components, layouts, and design systems. inspired by volunteer work on privacy-focused community platforms.',
-    stack: ['astro', 'vanilla css'],
-    status: 'in progress',
+      'Frontend UI components, layouts, and design systems. Inspired by volunteer work on privacy-focused community platforms.',
+    stack: ['Astro', 'Vanilla CSS'],
+    status: 'In progress',
     body: [
-      'a small library of components i kept rebuilding across volunteer projects. extracted and documented so the rebuilds stop.',
-      'deliberately small. no runtime, no dependencies beyond astro itself.',
+      'A small library of components I kept rebuilding across volunteer projects. Extracted and documented so the rebuilds stop.',
+      'Deliberately small. No runtime, no dependencies beyond Astro itself.',
     ],
     repoUrl: 'https://github.com/hestia-23/hearth-ui',
   },
   {
     slug: 'discord-alternatives',
-    title: 'discord alternatives',
-    subtitle: 'a neutral directory',
-    date: 'ongoing',
+    title: 'Discord Alternatives',
+    subtitle: 'A neutral directory',
+    date: 'Ongoing',
     description:
-      'a neutral, filterable directory of discord alternative platforms. no rankings, no reviews, no ads, no tracking.',
-    stack: ['astro'],
-    status: 'active',
+      'A neutral, filterable directory of Discord alternative platforms. No rankings, no reviews, no ads, no tracking.',
+    stack: ['Astro'],
+    status: 'Active',
     body: [
-      "the internet has a lot of 'best of' lists and almost none of them are neutral. one rule here: show the platforms, show what they do, let the reader decide.",
-      'data is a static json file under version control. every change is a pull request; every addition has a one-line rationale.',
+      "The internet has a lot of 'best of' lists and almost none of them are neutral. One rule here: show the platforms, show what they do, let the reader decide.",
+      'Data is a static JSON file under version control. Every change is a pull request; every addition has a one-line rationale.',
     ],
     repoUrl: 'https://github.com/Hestia-23/discordalternatives',
   },
   {
     slug: 'gamevox',
-    title: 'gamevox',
-    subtitle: 'privacy-focused voice chat',
-    date: 'ongoing',
+    title: 'GameVox',
+    subtitle: 'Privacy-focused voice chat',
+    date: 'Ongoing',
     description:
-      'community manager and volunteer ui contributor. ui mockups, interactive prototypes, and design reference files for the platform.',
-    stack: ['astro', 'html', 'css', 'javascript', 'typescript'],
-    status: 'active',
+      'Community manager and volunteer UI contributor. UI mockups, interactive prototypes, and design reference files for the platform.',
+    stack: ['Astro', 'HTML', 'CSS', 'JavaScript', 'TypeScript'],
+    status: 'Active',
     body: [
-      'gamevox is a privacy-focused voice chat platform. my role is community manager; my contribution as a volunteer is ui.',
-      "most of that work is ui mockups, interactive html/css prototypes, and reference files for the development team. a lot of this portfolio's design discipline comes from trying to keep that work coherent.",
+      'GameVox is a privacy-focused voice chat platform. My role is community manager; my contribution as a volunteer is UI.',
+      "Most of that work is UI mockups, interactive HTML/CSS prototypes, and reference files for the development team. A lot of this portfolio's design discipline comes from trying to keep that work coherent.",
     ],
     url: 'https://gamevox.com/',
   },

@@ -9,25 +9,25 @@ export type ContactItem = {
 
 export const CONTACT: ContactItem[] = [
   {
-    kind: 'email',
+    kind: 'Email',
     value: 'hestia.tu2cy@8alias.com',
     href: 'mailto:hestia.tu2cy@8alias.com',
     icon: 'mail',
   },
   {
-    kind: 'github',
+    kind: 'GitHub',
     value: 'github.com/hestia-23',
     href: 'https://github.com/hestia-23',
     icon: 'github',
   },
   {
-    kind: 'sponsors',
+    kind: 'Sponsors',
     value: 'github.com/sponsors/hestia-23',
     href: 'https://github.com/sponsors/hestia-23',
     icon: 'sponsors',
   },
   {
-    kind: 'x',
+    kind: 'X',
     value: '@alethia__23',
     href: 'https://x.com/alethia__23',
     icon: 'x',
