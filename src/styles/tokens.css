@@ -115,120 +115,48 @@
 }
 
 :root {
-  /* ---------- Color — raw palette (ground truth) ----------
-     Everything downstream is a semantic alias of these. */
-  --marble-50:     #faf8f3;  /* lightest — page highlights, hover wash */
-  --marble-100:    #f4f1ea;  /* BASE BACKGROUND — "marble white" */
-  --marble-200:    #ebe6db;  /* card, subtle fills */
-  --marble-300:    #ddd5c5;  /* hairline rules, dividers */
-  --marble-400:    #c5baa4;  /* disabled, placeholder */
+  /* ---------- Color — pigment-dark, the only theme ----------
+     Depth through saturation, not neutrality. The ground is saturated
+     teal-ink in the aegean family: low L, meaningful C. If you squint
+     and see slate, it has failed the brief — pigment must read as pigment.
+     Split-temp logic: aegean for function, terracotta as ember. */
 
-  --stone-500:     #8a8274;  /* muted text, metadata */
-  --stone-700:     #4f4a41;  /* secondary text */
-  --charcoal-900:  #2a2620;  /* BASE TEXT — "warm charcoal" */
-  --charcoal-950:  #1a1714;  /* maximum contrast, rare */
+  /* Surfaces — saturated teal-ink. Chroma is load-bearing. */
+  --bg:        #0c2833;  /* aegean L~22, C meaningful — teal pigment, not slate */
+  --bg-raised: #13333f;  /* one step warmer/brighter, still unmistakably teal */
+  --bg-sunken: #081e28;  /* deepest well; still chroma-carrying */
+  --surface:   #1a3f4c;
 
-  --terracotta-500: #b5714c;  /* EMBER accent — wordmark, glyphs, hover details only */
-  --terracotta-600: #9c5d3d;  /* ember on hover */
-  --terracotta-300: #d6a085;  /* ember wash */
+  /* Text — cool off-white with a faint teal cast, never pure #fff */
+  --fg:        #e6eef0;
+  --fg-muted:  #9cb2b9;
+  --fg-subtle: #6a848d;
+  --fg-faint:  #3f5560;
 
-  --ochre-500:     #a67c3a;   /* reserved one-off tag color; opt-in via tweak */
-  --ochre-600:     #8a6529;
+  --rule:        #1f3c47;  /* carries chroma; no neutral greys in this mode */
+  --rule-strong: #3a5966;
 
-  --bone-100:      #e8e2d4;   /* secondary bg: sections, cards */
-  --aegean-500:    #4a6670;   /* PRIMARY accent — links, CTAs, focus */
-  --aegean-600:    #3a525b;   /* primary hover */
-  --aegean-300:    #8aa0a8;   /* primary wash */
-  --sage-500:      #7a7a5e;   /* secondary — in-progress, quiet highlights */
-  --sage-600:      #5f5f48;
+  /* Primary accent — aegean. Everything interactive.
+     Lifted to carry text weight on its own ground. */
+  --accent:       #b8ccd4;
+  --accent-hover: #d6e2e8;
+  --accent-wash:  #2c4a55;
 
-  /* ---------- Color — semantic aliases (use these) ----------
-     Split-temp system: aegean does the functional work (links, CTAs, focus);
-     terracotta returns only as an ember — wordmark italic, § glyphs,
-     hover arrow. Cool for function, warm for character. */
-  --bg:            var(--marble-100);
-  --bg-raised:     var(--marble-50);
-  --bg-sunken:     var(--marble-200);
-  --surface:       var(--bone-100);
-
-  --fg:            var(--charcoal-900);
-  --fg-muted:      var(--stone-700);
-  --fg-subtle:     var(--stone-500);
-  --fg-faint:      var(--marble-400);
-
-  --rule:          var(--marble-300);
-  --rule-strong:   var(--stone-500);
-
-  /* Primary accent — aegean. Everything interactive. */
-  --accent:        var(--aegean-500);
-  --accent-hover:  var(--aegean-600);
-  --accent-wash:   var(--aegean-300);
-
-  /* Secondary — sage. Use for status tags or quiet differentiation. */
-  --secondary:       var(--sage-500);
-  --secondary-hover: var(--sage-600);
+  /* Secondary — sage. Lifted + cooled to hold its own. */
+  --secondary:       #a8b894;
+  --secondary-hover: #c4d2b0;
 
   /* Ember — terracotta. One-in-a-page decorative accent only.
      Allowed: wordmark italic, § section glyph, hover-state arrow tip.
      NOT allowed: links, CTAs, buttons, body emphasis. */
-  --ember:        var(--terracotta-500);
-  --ember-hover:  var(--terracotta-600);
-  --ember-wash:   var(--terracotta-300);
+  --ember:       #e0a58a;
+  --ember-hover: #ecb89f;
+  --ember-wash:  #5c3a2a;
 
-  --selection-bg:  #cfdbe0;  /* aegean wash, solid */
-  --selection-fg:  var(--charcoal-900);
+  --selection-bg: #2c4a55;
+  --selection-fg: #e6eef0;
 }
 
-/* ---------- Dark mode — pigment-dark, not true dark ----------
-   Depth through saturation, not neutrality. The ground is a saturated
-   teal-ink in the aegean family: low L, meaningful C. If you squint and
-   see slate, it has failed the brief — pigment must read as pigment.
-   Same split-temp logic: aegean for function, terracotta as ember.
-   Auto-applies when the OS requests dark. */
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Surfaces — saturated teal-ink. Chroma is load-bearing. */
-    --bg:        #0c2833;  /* aegean L~22, C meaningful — teal pigment, not slate */
-    --bg-raised: #13333f;  /* one step warmer/brighter, still unmistakably teal */
-    --bg-sunken: #081e28;  /* deepest well; still chroma-carrying */
-    --surface:   #1a3f4c;
-
-    /* Text — cool off-white with a faint teal cast, never pure #fff */
-    --fg:        #e6eef0;
-    --fg-muted:  #9cb2b9;
-    --fg-subtle: #6a848d;
-    --fg-faint:  #3f5560;
-
-    --rule:        #1f3c47;  /* carries chroma; no neutral greys in this mode */
-    --rule-strong: #3a5966;
-
-    /* Aegean lifts to carry text weight on its own ground */
-    --accent:       #b8ccd4;
-    --accent-hover: #d6e2e8;
-    --accent-wash:  #2c4a55;
-
-    /* Ember softens one step — terracotta against teal-ink is plenty */
-    --ember:       #e0a58a;
-    --ember-hover: #ecb89f;
-    --ember-wash:  #5c3a2a;
-
-    /* Sage lifted + cooled to hold its own */
-    --secondary:       #a8b894;
-    --secondary-hover: #c4d2b0;
-
-    --selection-bg: #2c4a55;
-    --selection-fg: #e6eef0;
-
-    /* Focus ring — aegean at lifted opacity for dark grounds */
-    --shadow-focus: 0 0 0 3px rgba(184, 204, 212, 0.38);
-  }
-}
-
-/* ---------- Legacy theme overrides removed.
-   The system now commits to a single split-temp palette (B-prime):
-   aegean for function, terracotta as ember for character.
-   Keep raw palette tokens available so individual uses (e.g. a one-off
-   terracotta tag) can still reach them directly. */
 :root {
 
   /* ---------- Typography — families ---------- */
@@ -309,7 +237,7 @@
   --shadow-none: none;
   --shadow-sm:   0 1px 0 0 var(--rule);                      /* single rule */
   --shadow-md:   0 1px 2px 0 rgba(42, 38, 32, 0.06);         /* whisper */
-  --shadow-focus: 0 0 0 3px rgba(74, 102, 112, 0.28);        /* a11y focus — aegean */
+  --shadow-focus: 0 0 0 3px rgba(184, 204, 212, 0.38);       /* a11y focus — aegean lifted for dark */
 
   /* ---------- Motion — brief, linear-ish, quiet ---------- */
   --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
