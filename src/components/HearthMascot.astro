@@ -1,0 +1,134 @@
+---
+interface Props {
+  size?: number;
+  class?: string;
+}
+const { size = 96, class: className = '' } = Astro.props;
+const cls = ['hearth', className].filter(Boolean).join(' ');
+---
+
+<svg
+  class={cls}
+  style={`width: ${size}px; height: ${size}px; overflow: visible;`}
+  viewBox="0 0 100 100"
+  role="img"
+  aria-label="Hestia hearth"
+  tabindex="0"
+>
+  <defs>
+    <symbol id="meander-unit" viewBox="0 0 12 8">
+      <path
+        d="M0 4 H3 V1 H9 V7 H1 V3 H7 V5 H12"
+        fill="none" stroke="currentColor" stroke-width="0.9"
+        stroke-linecap="square" stroke-linejoin="miter"
+      />
+    </symbol>
+    <clipPath id="archClip">
+      <path d="M28 82 V52 A22 22 0 0 1 72 52 V82 Z" />
+    </clipPath>
+  </defs>
+
+  <g stroke="currentColor" stroke-width="1.5" stroke-linecap="square" fill="none">
+    <path d="M14 86 H86" />
+    <path d="M18 86 V82 H82 V86" />
+    <path d="M22 82 V36" />
+    <path d="M78 82 V36" />
+    <path d="M19 36 H29" />
+    <path d="M71 36 H81" />
+    <path d="M16 32 H84" />
+    <path d="M16 18 H84" />
+    <path d="M16 18 L50 6 L84 18" />
+    <path d="M28 82 V52 A22 22 0 0 1 72 52 V82" />
+  </g>
+
+  <g transform="translate(16,20)" opacity="0.9">
+    <use href="#meander-unit" x="0"  y="1" width="12" height="8" />
+    <use href="#meander-unit" x="12" y="1" width="12" height="8" />
+    <use href="#meander-unit" x="24" y="1" width="12" height="8" />
+    <use href="#meander-unit" x="36" y="1" width="12" height="8" />
+    <use href="#meander-unit" x="48" y="1" width="12" height="8" />
+    <use href="#meander-unit" x="60" y="1" width="12" height="8" />
+  </g>
+
+  <g clip-path="url(#archClip)">
+    <rect class="log-glow" x="28" y="62" width="44" height="20" fill="var(--ember-wash)" opacity="0.18" />
+
+    <g stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="square">
+      <path d="M28 82 H72" stroke-width="1.5" />
+      <path d="M40 82 V79 M56 82 V79" />
+      <path d="M28 79 H72" />
+    </g>
+
+    <g>
+      <ellipse cx="38" cy="76" rx="6" ry="3" fill="var(--bg)" stroke="currentColor" stroke-width="1.2" />
+      <ellipse cx="38" cy="76" rx="3.5" ry="1.7" fill="none" stroke="currentColor" stroke-width="0.7" opacity="0.7" />
+      <circle cx="38" cy="76" r="0.9" fill="currentColor" opacity="0.7" />
+    </g>
+    <g>
+      <ellipse cx="62" cy="76" rx="6" ry="3" fill="var(--bg)" stroke="currentColor" stroke-width="1.2" />
+      <ellipse cx="62" cy="76" rx="3.5" ry="1.7" fill="none" stroke="currentColor" stroke-width="0.7" opacity="0.7" />
+      <circle cx="62" cy="76" r="0.9" fill="currentColor" opacity="0.7" />
+    </g>
+    <g>
+      <ellipse cx="50" cy="71" rx="7" ry="3.2" fill="var(--bg)" stroke="currentColor" stroke-width="1.3" />
+      <ellipse cx="50" cy="71" rx="4.2" ry="1.9" fill="none" stroke="currentColor" stroke-width="0.7" opacity="0.7" />
+      <ellipse cx="50" cy="71" rx="2"   ry="0.9" fill="none" stroke="currentColor" stroke-width="0.6" opacity="0.6" />
+      <circle cx="50" cy="71" r="0.7" fill="currentColor" opacity="0.7" />
+    </g>
+
+    <g class="flame-group">
+      <g class="flame">
+        <path
+          d="M50 76 C 42 70, 40 60, 46 52 C 47 56, 49 56, 50 54 C 52 50, 54 48, 58 46 C 56 52, 58 56, 60 60 C 62 66, 60 72, 50 76 Z"
+          fill="var(--accent)"
+          opacity="0.16"
+        />
+        <g class="flame-inner">
+          <path
+            d="M50 74 C 44 70, 43 62, 48 56 C 49 58, 50 58, 51 56 C 53 53, 55 52, 57 50 C 56 54, 57 58, 58 61 C 60 66, 58 72, 50 74 Z"
+            fill="var(--ember)"
+          />
+          <ellipse cx="50" cy="68" rx="3" ry="4.5" fill="var(--ember-wash)" opacity="0.85" />
+        </g>
+      </g>
+    </g>
+
+    <g>
+      <circle class="ember e1" cx="50" cy="56" r="1.4" fill="var(--ember)" />
+      <circle class="ember e2" cx="46" cy="54" r="1.0" fill="var(--ember)" opacity="0.85" />
+      <circle class="ember e3" cx="54" cy="58" r="1.6" fill="var(--ember-wash)" opacity="0.9" />
+      <circle class="ember e4" cx="48" cy="52" r="0.9" fill="var(--ember)" />
+      <circle class="ember e5" cx="52" cy="54" r="1.2" fill="var(--ember)" opacity="0.9" />
+      <circle class="ember e6" cx="50" cy="50" r="1.0" fill="var(--ember-wash)" opacity="0.8" />
+    </g>
+
+    <g>
+      <circle class="burst b1" cx="50" cy="54" r="1.4" fill="var(--ember)" />
+      <circle class="burst b2" cx="50" cy="54" r="1.6" fill="var(--ember-wash)" />
+      <circle class="burst b3" cx="50" cy="54" r="1.0" fill="var(--ember)" />
+      <circle class="burst b4" cx="50" cy="54" r="1.2" fill="var(--ember-wash)" />
+      <circle class="burst b5" cx="50" cy="54" r="0.9" fill="var(--ember)" />
+      <circle class="burst b6" cx="50" cy="54" r="1.4" fill="var(--ember)" />
+      <circle class="burst b7" cx="50" cy="54" r="1.0" fill="var(--ember-wash)" />
+      <circle class="burst b8" cx="50" cy="54" r="1.3" fill="var(--ember)" />
+    </g>
+  </g>
+</svg>
+
+<script>
+  document.querySelectorAll<SVGElement>('.hearth').forEach((el) => {
+    const fire = () => {
+      el.classList.remove('is-bursting');
+      void (el as unknown as HTMLElement).offsetWidth;
+      el.classList.add('is-bursting');
+      window.setTimeout(() => el.classList.remove('is-bursting'), 1300);
+    };
+    el.addEventListener('click', fire);
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        fire();
+      }
+    });
+  });
+</script>

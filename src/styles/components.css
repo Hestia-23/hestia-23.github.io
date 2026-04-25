@@ -44,6 +44,13 @@
   padding: var(--space-11) 0 var(--space-10);
   border-bottom: 1px solid var(--rule);
 }
+.hero-lockup {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-5);
+  margin: 0 0 var(--space-6);
+}
+.hero-mascot { flex-shrink: 0; }
 .hero-wordmark {
   font-family: var(--font-display);
   font-style: italic;
@@ -52,7 +59,7 @@
   line-height: 1;
   letter-spacing: -0.03em;
   color: var(--ember);
-  margin: 0 0 var(--space-6);
+  margin: 0;
 }
 .hero-lede {
   font-family: var(--font-display);
@@ -398,6 +405,104 @@
   display: inline-block;
   vertical-align: -0.125em;
   flex-shrink: 0;
+}
+
+/* ---------- Hearth mascot ----------
+   Architectural shrine. Flame breathes, embers rise, click triggers a
+   short ember burst. Single state (lit) on the live site; dim/out
+   variants explored on the design canvas only. */
+.hearth {
+  display: block;
+  color: var(--accent);
+  position: relative;
+  user-select: none;
+  cursor: pointer;
+}
+.hearth:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+  border-radius: 4px;
+}
+
+.hearth .flame {
+  transform-origin: 50px 76px;
+  transform-box: fill-box;
+  animation: flame-breath 2400ms cubic-bezier(.4, 0, .2, 1) infinite;
+}
+.hearth .flame-inner {
+  transform-origin: 50px 76px;
+  transform-box: fill-box;
+  animation: flame-flicker 900ms cubic-bezier(.4, 0, .2, 1) infinite alternate;
+}
+@keyframes flame-breath {
+  0%, 100% { transform: scaleY(1)    rotate(-0.6deg); }
+  50%      { transform: scaleY(1.04) rotate( 0.8deg); }
+}
+@keyframes flame-flicker {
+  from { transform: scale(1)    translateY(0);    opacity: 0.92; }
+  to   { transform: scale(1.05) translateY(-1px); opacity: 1; }
+}
+
+.hearth .ember {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ember-rise 5400ms cubic-bezier(.3, .1, .4, 1) infinite;
+  opacity: 0;
+}
+.hearth .ember.e1 { animation-delay:    0ms; --drift:  6px; }
+.hearth .ember.e2 { animation-delay:  900ms; --drift: -8px; }
+.hearth .ember.e3 { animation-delay: 1800ms; --drift:  4px; }
+.hearth .ember.e4 { animation-delay: 2600ms; --drift: -5px; }
+.hearth .ember.e5 { animation-delay: 3400ms; --drift:  9px; }
+.hearth .ember.e6 { animation-delay: 4100ms; --drift: -3px; }
+@keyframes ember-rise {
+  0%   { opacity: 0;    transform: translate(0, 0)                              scale(0.6); }
+  12%  { opacity: 1; }
+  60%  { opacity: 0.85; transform: translate(calc(var(--drift) * 0.6), -22px)   scale(1); }
+  100% { opacity: 0;    transform: translate(var(--drift), -42px)               scale(0.4); }
+}
+
+.hearth .burst {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.hearth.is-bursting .burst {
+  animation: burst-rise 1200ms cubic-bezier(.2, .7, .3, 1) forwards;
+}
+.hearth .burst.b1 { animation-delay:   0ms; --bx: -16px; }
+.hearth .burst.b2 { animation-delay:  40ms; --bx:   9px; }
+.hearth .burst.b3 { animation-delay:  80ms; --bx: -22px; }
+.hearth .burst.b4 { animation-delay: 110ms; --bx:  18px; }
+.hearth .burst.b5 { animation-delay: 150ms; --bx:  -6px; }
+.hearth .burst.b6 { animation-delay: 180ms; --bx:  26px; }
+.hearth .burst.b7 { animation-delay: 220ms; --bx: -12px; }
+.hearth .burst.b8 { animation-delay: 260ms; --bx:  14px; }
+@keyframes burst-rise {
+  0%   { opacity: 0; transform: translate(0, 0) scale(0.4); }
+  10%  { opacity: 1; }
+  100% { opacity: 0; transform: translate(var(--bx), -50px) scale(0.5); }
+}
+.hearth.is-bursting .flame-inner {
+  animation: flame-pulse 600ms cubic-bezier(.2, .7, .3, 1) 1;
+}
+@keyframes flame-pulse {
+  0%   { transform: scale(1);    filter: brightness(1); }
+  20%  { transform: scale(1.18); filter: brightness(1.3); }
+  100% { transform: scale(1);    filter: brightness(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hearth .flame,
+  .hearth .flame-inner,
+  .hearth .ember,
+  .hearth .burst {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+  .hearth .ember { opacity: 0.85 !important; }
+  .hearth .burst { opacity: 0 !important; }
 }
 
 /* ---------- Reduced motion ---------- */
