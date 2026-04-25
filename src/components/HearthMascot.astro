@@ -3,13 +3,15 @@ interface Props {
   size?: number;
   class?: string;
 }
-const { size = 96, class: className = '' } = Astro.props;
-const cls = ['hearth', className].filter(Boolean).join(' ');
+const { size, class: className = '' } = Astro.props;
+const cls = ['hearth', 'is-lit', className].filter(Boolean).join(' ');
+const baseStyle = 'overflow: visible;';
+const sizeStyle = size ? `width: ${size}px; height: ${size}px; ${baseStyle}` : baseStyle;
 ---
 
 <svg
   class={cls}
-  style={`width: ${size}px; height: ${size}px; overflow: visible;`}
+  style={sizeStyle}
   viewBox="0 0 100 100"
   role="img"
   aria-label="Hestia hearth"
@@ -103,31 +105,27 @@ const cls = ['hearth', className].filter(Boolean).join(' ');
     </g>
 
     <g>
-      <circle class="burst b1" cx="50" cy="54" r="1.4" fill="var(--ember)" />
-      <circle class="burst b2" cx="50" cy="54" r="1.6" fill="var(--ember-wash)" />
-      <circle class="burst b3" cx="50" cy="54" r="1.0" fill="var(--ember)" />
-      <circle class="burst b4" cx="50" cy="54" r="1.2" fill="var(--ember-wash)" />
-      <circle class="burst b5" cx="50" cy="54" r="0.9" fill="var(--ember)" />
-      <circle class="burst b6" cx="50" cy="54" r="1.4" fill="var(--ember)" />
-      <circle class="burst b7" cx="50" cy="54" r="1.0" fill="var(--ember-wash)" />
-      <circle class="burst b8" cx="50" cy="54" r="1.3" fill="var(--ember)" />
+      <ellipse class="smoke s1" cx="50" cy="68" rx="3" ry="2" fill="var(--fg-muted)" opacity="0" />
+      <ellipse class="smoke s2" cx="48" cy="66" rx="2.4" ry="1.6" fill="var(--fg-muted)" opacity="0" />
+      <ellipse class="smoke s3" cx="52" cy="69" rx="2.6" ry="1.7" fill="var(--fg-muted)" opacity="0" />
     </g>
   </g>
 </svg>
 
 <script>
+  const STATES = ['is-lit', 'is-out', 'is-smoke', 'is-dim'];
   document.querySelectorAll<SVGElement>('.hearth').forEach((el) => {
-    const fire = () => {
-      el.classList.remove('is-bursting');
-      void (el as unknown as HTMLElement).offsetWidth;
-      el.classList.add('is-bursting');
-      window.setTimeout(() => el.classList.remove('is-bursting'), 1300);
+    let idx = 0;
+    const cycle = () => {
+      el.classList.remove(...STATES);
+      idx = (idx + 1) % STATES.length;
+      el.classList.add(STATES[idx]);
     };
-    el.addEventListener('click', fire);
+    el.addEventListener('click', cycle);
     el.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        fire();
+        cycle();
       }
     });
   });
