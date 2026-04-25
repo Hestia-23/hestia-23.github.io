@@ -26,4 +26,5 @@ pnpm-debug.log*
 # local working files (not for public repo)
 .scrapbook.md
 .cont.md
+.mockups/
 design-system/
