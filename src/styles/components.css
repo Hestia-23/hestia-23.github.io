@@ -1,13 +1,9 @@
-/* Portfolio component styles. Ported from design-system/ui_kits/portfolio/portfolio.css. */
-/* Design tokens are imported separately via tokens.css in Layout.astro. */
-
 .page {
   max-width: var(--page-max);
   margin: 0 auto;
   padding: 0 var(--space-6);
 }
 
-/* ---------- Nav ---------- */
 .nav {
   display: flex;
   align-items: baseline;
@@ -49,9 +45,6 @@
   border-bottom-color: var(--accent-wash);
 }
 
-/* ---------- Hero ----------
-   Hero has no bottom border or bottom padding. The PixelShrine fills
-   the full hero width and its ground line acts as the section divider. */
 .hero {
   padding: var(--space-7) 0 0;
   display: flex;
@@ -110,7 +103,6 @@
 .hero-cta .arrow { display: inline-block; transition: transform var(--dur-base) var(--ease-out); margin-left: 6px; }
 .hero-cta:hover .arrow { transform: translateX(3px); }
 
-/* ---------- Section ---------- */
 .section { padding: var(--space-9) 0; }
 .section + .section { border-top: 1px solid var(--rule); }
 .section-eyebrow {
@@ -360,7 +352,6 @@
   .project-list-cta { justify-content: center; }
 }
 
-/* ---------- Prose (about, project detail) ---------- */
 .prose {
   max-width: 60ch;
   font-family: var(--font-body);
@@ -374,7 +365,6 @@
 .prose a:hover { color: var(--accent-hover); text-decoration-color: var(--accent); }
 .prose em { font-family: var(--font-display); font-style: italic; font-size: 1.05em; }
 
-/* ---------- About two-col ---------- */
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1.6fr;
@@ -399,11 +389,6 @@
   margin: var(--space-2) 0 0;
 }
 
-/* ---------- Contact — door-ajar hover ----------
-   Each row is a panel hinged on its left edge. On hover/focus, the
-   panel pivots forward at the hinge so the right edge tips toward
-   the viewer. Shadow falls toward the hinge; an inset highlight
-   catches the inner edge as the panel separates from the wall. */
 .contact-list {
   list-style: none;
   padding: 0;
@@ -519,7 +504,6 @@
   .contact-value { text-align: left; font-size: var(--step-1); }
 }
 
-/* ---------- Footer ---------- */
 .footer {
   margin-top: var(--space-10);
   padding: var(--space-6) 0 var(--space-7);
@@ -535,7 +519,6 @@
 .footer a:hover { color: var(--accent); }
 .footer-ornament { opacity: 0.4; color: var(--fg-subtle); }
 
-/* ---------- Back link ---------- */
 .back-link {
   font-family: var(--font-body);
   font-size: 14px;
@@ -550,7 +533,6 @@
 }
 .back-link:hover { color: var(--accent); }
 
-/* ---------- Detail CTAs (project detail page) ---------- */
 .detail-ctas {
   display: flex;
   gap: var(--space-4);
@@ -581,7 +563,6 @@
 }
 .btn-ghost:hover { background: var(--bg-sunken); }
 
-/* ---------- Icons ---------- */
 .icon {
   width: 1em;
   height: 1em;
@@ -590,10 +571,6 @@
   flex-shrink: 0;
 }
 
-/* ---------- Hearth mascot ----------
-   Architectural shrine. Click cycles three states:
-   lit (default) → dim (smaller centered flame) → out (smoke from spent logs) → lit.
-   Source: F:\Alethia\Portfolio\hestia-hero (Claude Design collaboration). */
 .hearth {
   --base-dur: 5400ms;
   display: block;
@@ -608,9 +585,6 @@
   border-radius: 4px;
 }
 
-/* FLAME — visibility & scale per state.
-   transform-box:fill-box + center bottom anchors the scale to the flame's
-   own base, so dim shrinks evenly upward instead of drifting to a corner. */
 .hearth .flame-group {
   transition: opacity 600ms cubic-bezier(.4, 0, .2, 1),
               transform 600ms cubic-bezier(.4, 0, .2, 1);
@@ -651,7 +625,6 @@
   100% { transform: scale(1)     translateY(0);     opacity: 0.92; }
 }
 
-/* EMBERS — visible in lit & dim, hidden in out */
 .hearth .ember {
   transform-box: fill-box;
   transform-origin: center;
@@ -678,7 +651,6 @@
   100% { opacity: 0;    transform: translate(var(--drift), -42px)               scale(0.4); }
 }
 
-/* SMOKE — only when is-out (spent logs trailing smoke) */
 .hearth .smoke {
   transform-box: fill-box;
   transform-origin: center;
@@ -697,13 +669,11 @@
   100% { opacity: 0;    transform: translate(var(--sdrift), -56px)             scale(2.4); }
 }
 
-/* LOG GLOW — fades down across states */
 .hearth .log-glow { transition: opacity 600ms cubic-bezier(.4, 0, .2, 1); }
 .hearth.is-lit .log-glow { opacity: 1; }
 .hearth.is-dim .log-glow { opacity: 0.5; }
 .hearth.is-out .log-glow { opacity: 0.2; }
 
-/* RELIGHT BLOOM — quick catch on out→lit (faster than the 600ms transition) */
 .hearth.is-relighting .log-glow {
   animation: log-bloom 700ms cubic-bezier(.5, 0, .2, 1) both;
 }
@@ -730,10 +700,6 @@
   .hearth.is-out .ember { opacity: 0 !important; }
 }
 
-/* ---------- Pixel shrine, placeholder pixel-art scene under the hero.
-   80x40 logical pixels rendered as crisp pixels. Two interactions:
-   the flame cycles lit→dim→out, the star twinkles. Production sprite
-   will be redrawn in Claude Design. */
 .shrine {
   image-rendering: pixelated;
   image-rendering: crisp-edges;
@@ -741,7 +707,6 @@
 .shrine,
 .shrine * { outline: none; }
 
-/* Sun (.star), twinkles on click; idle pulsating glow; hover scale */
 .shrine .star {
   transform-box: fill-box;
   transform-origin: center;
@@ -753,11 +718,9 @@
 }
 .shrine .star-hit { cursor: pointer; }
 
-/* Twinkle-only corner sparkles (click reward) */
 .shrine .star-rays { opacity: 0; transition: opacity 200ms; }
 .shrine .star.is-twinkling .star-rays { opacity: 1; }
 
-/* Pulsating glow, the four ray-tip extensions fade in/out continuously */
 .shrine .star-glow {
   animation: shrine-sun-glow 2400ms ease-in-out infinite;
 }
@@ -773,7 +736,6 @@
   100% { transform: scale(1)   rotate(0deg);   }
 }
 
-/* Cloud, idle float, puffs on click */
 .shrine .cloud {
   transform-box: fill-box;
   transform-origin: center;
@@ -787,14 +749,12 @@
   0%, 100% { transform: translate(0, 0); }
   50%      { transform: translate(0, -1.4px); }
 }
-/* Opacity-only pulse, no scale (pixel art breaks under fractional scale) */
 @keyframes shrine-cloud-puff {
   0%   { opacity: 0.55; }
   30%  { opacity: 1; }
   100% { opacity: 0.55; }
 }
 
-/* Lightning bolt, hidden by default; double-flashes on cloud click */
 .shrine .cloud-bolt { opacity: 0; }
 .shrine .cloud.is-puffed .cloud-bolt {
   animation: shrine-cloud-bolt 600ms cubic-bezier(.4, 0, .2, 1);
@@ -811,7 +771,6 @@
   .shrine .cloud.is-puffed .cloud-bolt { animation: none; opacity: 0.7; }
 }
 
-/* Pillars, rumble on click */
 .shrine .pillar {
   transform-box: fill-box;
   transform-origin: center bottom;
@@ -830,7 +789,6 @@
   85%      { transform: translateX( 0.2px); }
 }
 
-/* Flame, three-state cycle */
 .shrine .flame-group {
   transform-box: fill-box;
   transform-origin: center bottom;
@@ -855,13 +813,11 @@
 
 .shrine .flame-hit { cursor: pointer; }
 
-/* Altar glow under the flame */
 .shrine .altar-glow { transition: opacity 500ms cubic-bezier(.4, 0, .2, 1); }
 .shrine.is-lit .altar-glow { opacity: 0.6; }
 .shrine.is-dim .altar-glow { opacity: 0.3; }
 .shrine.is-out .altar-glow { opacity: 0; }
 
-/* Smoke, only when out */
 .shrine .smoke { transform-box: fill-box; transform-origin: center; opacity: 0; }
 .shrine.is-out .smoke {
   animation: shrine-smoke-rise 4200ms cubic-bezier(.3, .1, .4, 1) infinite;
@@ -976,7 +932,6 @@
   .back-to-top { transition: opacity 120ms; transform: none !important; }
 }
 
-/* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
 }
