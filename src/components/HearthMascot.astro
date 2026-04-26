@@ -14,7 +14,7 @@ const sizeStyle = size ? `width: ${size}px; height: ${size}px; ${baseStyle}` : b
   style={sizeStyle}
   viewBox="0 0 100 100"
   role="img"
-  aria-label="Hestia hearth"
+  aria-label="Hestia hearth, lit"
   tabindex="0"
 >
   <defs>
@@ -113,13 +113,27 @@ const sizeStyle = size ? `width: ${size}px; height: ${size}px; ${baseStyle}` : b
 </svg>
 
 <script>
-  const STATES = ['is-lit', 'is-out', 'is-smoke', 'is-dim'];
+  const STATES = ['is-lit', 'is-dim', 'is-out'] as const;
+  const LABELS: Record<typeof STATES[number], string> = {
+    'is-lit': 'Hestia hearth, lit',
+    'is-dim': 'Hestia hearth, dim',
+    'is-out': 'Hestia hearth, gone out',
+  };
+  const RELIGHT_MS = 700;
+
   document.querySelectorAll<SVGElement>('.hearth').forEach((el) => {
     let idx = 0;
     const cycle = () => {
-      el.classList.remove(...STATES);
+      const prev = STATES[idx];
       idx = (idx + 1) % STATES.length;
-      el.classList.add(STATES[idx]);
+      const next = STATES[idx];
+      el.classList.remove(...STATES);
+      el.classList.add(next);
+      el.setAttribute('aria-label', LABELS[next]);
+      if (prev === 'is-out' && next === 'is-lit') {
+        el.classList.add('is-relighting');
+        window.setTimeout(() => el.classList.remove('is-relighting'), RELIGHT_MS);
+      }
     };
     el.addEventListener('click', cycle);
     el.addEventListener('keydown', (e) => {
