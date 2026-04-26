@@ -21,10 +21,41 @@ const { project } = Astro.props;
 <Layout title={`Hestia · ${project.title}`}>
   <Section eyebrow={`§ ${project.date}`} title={project.title}>
     <BackLink href="/projects/" />
+
+    <dl class="project-spec">
+      <div class="project-spec-row">
+        <dt>Stack</dt>
+        <dd>{project.stack.join(' · ')}</dd>
+      </div>
+      {project.status && (
+        <div class="project-spec-row">
+          <dt>Status</dt>
+          <dd>{project.status}</dd>
+        </div>
+      )}
+      <div class="project-spec-row">
+        <dt>Date</dt>
+        <dd>{project.date}</dd>
+      </div>
+      {project.url && (
+        <div class="project-spec-row">
+          <dt>Site</dt>
+          <dd><a href={project.url}>{project.url.replace(/^https?:\/\//, '').replace(/\/$/, '')}</a></dd>
+        </div>
+      )}
+      {project.repoUrl && (
+        <div class="project-spec-row">
+          <dt>Source</dt>
+          <dd><a href={project.repoUrl}>{project.repoUrl.replace(/^https?:\/\/(www\.)?/, '')}</a></dd>
+        </div>
+      )}
+    </dl>
+
     <div class="prose">
-      {project.subtitle && <p><em>{project.subtitle}.</em></p>}
+      {project.subtitle && <p class="project-detail-subtitle"><em>{project.subtitle}.</em></p>}
       {project.body.map((para) => <p>{para}</p>)}
     </div>
+
     {(project.url || project.repoUrl) && (
       <div class="detail-ctas">
         {project.url && <a class="btn btn-primary" href={project.url}>Visit site</a>}

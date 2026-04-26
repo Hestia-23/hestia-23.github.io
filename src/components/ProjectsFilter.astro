@@ -1,0 +1,107 @@
+---
+---
+
+<div class="projects-filter">
+  <label class="projects-filter-search">
+    <span class="visually-hidden">Search projects</span>
+    <input
+      type="search"
+      placeholder="Search projects…"
+      autocomplete="off"
+      data-projects-filter-input
+    />
+  </label>
+
+  <label class="projects-filter-sort">
+    <span class="projects-filter-label">Sort</span>
+    <select data-projects-filter-sort>
+      <option value="newest">Newest first</option>
+      <option value="oldest">Oldest first</option>
+      <option value="title-az">Title · A → Z</option>
+      <option value="title-za">Title · Z → A</option>
+    </select>
+  </label>
+
+  <p class="projects-filter-empty" data-projects-filter-empty hidden>
+    Nothing matches that search.
+  </p>
+</div>
+
+<style>
+  .visually-hidden {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
+
+<script>
+  const containers = document.querySelectorAll<HTMLDivElement>('.projects-filter');
+  containers.forEach((container) => {
+    const input = container.querySelector<HTMLInputElement>('[data-projects-filter-input]');
+    const sortSelect = container.querySelector<HTMLSelectElement>('[data-projects-filter-sort]');
+    const empty = container.querySelector<HTMLElement>('[data-projects-filter-empty]');
+    const list = container.nextElementSibling as HTMLElement | null;
+    if (!input || !sortSelect || !empty || !list) return;
+
+    const cards = Array.from(list.querySelectorAll<HTMLElement>('.project-card:not(.project-card-placeholder)'));
+
+    const apply = () => {
+      const q = input.value.trim().toLowerCase();
+      const mode = sortSelect.value;
+
+      let visibleCount = 0;
+      cards.forEach((card) => {
+        const haystack = (card.dataset.search || '').toLowerCase();
+        const match = q === '' || haystack.includes(q);
+        card.toggleAttribute('hidden', !match);
+        if (match) visibleCount++;
+      });
+
+      const ordered = [...cards].sort((a, b) => {
+        const aOrig = Number(a.dataset.origIndex || 0);
+        const bOrig = Number(b.dataset.origIndex || 0);
+        const aDate = a.dataset.startedAt || '';
+        const bDate = b.dataset.startedAt || '';
+        const aTitle = (a.dataset.title || '').toLowerCase();
+        const bTitle = (b.dataset.title || '').toLowerCase();
+
+        if (mode === 'title-az') return aTitle.localeCompare(bTitle);
+        if (mode === 'title-za') return bTitle.localeCompare(aTitle);
+
+        if (mode === 'oldest') {
+          if (aDate && bDate) return aDate.localeCompare(bDate);
+          if (aDate) return -1;
+          if (bDate) return 1;
+          return bOrig - aOrig;
+        }
+
+        if (aDate && bDate) return bDate.localeCompare(aDate);
+        if (aDate) return -1;
+        if (bDate) return 1;
+        return aOrig - bOrig;
+      });
+
+      ordered.forEach((card, i) => {
+        card.style.order = String(i);
+      });
+
+      empty.toggleAttribute('hidden', visibleCount > 0);
+    };
+
+    cards.forEach((card, i) => {
+      card.dataset.origIndex = String(i);
+      card.dataset.search = card.textContent?.replace(/\s+/g, ' ').trim() || '';
+      const titleEl = card.querySelector('.project-title');
+      card.dataset.title = titleEl?.textContent?.trim() || '';
+    });
+
+    input.addEventListener('input', apply);
+    sortSelect.addEventListener('change', apply);
+    apply();
+  });
+</script>

@@ -2,11 +2,13 @@
 import Layout from '../layouts/Layout.astro';
 import Section from '../components/Section.astro';
 import ProjectList from '../components/ProjectList.astro';
+import ProjectsFilter from '../components/ProjectsFilter.astro';
 import { PROJECTS } from '../data/projects';
 ---
 
 <Layout title="Hestia · Projects">
   <Section eyebrow="§ Projects" title="All work">
+    <ProjectsFilter />
     <ProjectList projects={PROJECTS} />
   </Section>
 </Layout>

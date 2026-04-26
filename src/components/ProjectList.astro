@@ -1,14 +1,34 @@
 ---
-import ProjectRow from './ProjectRow.astro';
+import ProjectCard from './ProjectCard.astro';
+import ChevronsRight from './icons/ChevronsRight.astro';
 import type { Project } from '../data/projects';
 
 interface Props {
   projects: Project[];
+  cta?: boolean;
 }
 
-const { projects } = Astro.props;
+const { projects, cta = false } = Astro.props;
+const placeholderCount = cta ? Math.max(0, 4 - projects.length) : 0;
 ---
 
 <div class="project-list">
-  {projects.map((p) => <ProjectRow project={p} />)}
+  {projects.map((p, i) => <ProjectCard project={p} index={i} />)}
+  {Array.from({ length: placeholderCount }).map(() => (
+    <div class="project-card project-card-placeholder" aria-hidden="true">
+      <div class="project-card-head">
+        <span class="project-num">··</span>
+        <span class="project-title">Coming soon</span>
+      </div>
+      <p class="project-card-body">A space held for the next project.</p>
+    </div>
+  ))}
 </div>
+
+{cta && (
+  <div class="project-list-cta">
+    <a class="project-list-cta-link" href="/projects/">
+      All projects <ChevronsRight class="arrow" />
+    </a>
+  </div>
+)}

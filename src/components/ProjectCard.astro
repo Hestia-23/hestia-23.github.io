@@ -1,0 +1,26 @@
+---
+import type { Project } from '../data/projects';
+
+interface Props {
+  project: Project;
+  index: number;
+}
+
+const { project, index } = Astro.props;
+const numLabel = String(index + 1).padStart(2, '0');
+---
+
+<a
+  class="project-card"
+  href={`/projects/${project.slug}/`}
+  data-started-at={project.startedAt ?? ''}
+>
+  <div class="project-card-head">
+    <span class="project-num">{numLabel}</span>
+    <span class="project-title">
+      {project.title}
+      {project.subtitle && <em>{project.subtitle}</em>}
+    </span>
+  </div>
+  <p class="project-card-body">{project.description}</p>
+</a>
