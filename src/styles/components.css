@@ -39,24 +39,30 @@
 .nav-link:hover { color: var(--accent); }
 .nav-link.active { color: var(--fg); }
 
-/* ---------- Hero ---------- */
+/* ---------- Hero ----------
+   Hero has no bottom border or bottom padding. The PixelShrine fills
+   the full hero width and its ground line acts as the section divider. */
 .hero {
-  padding: var(--space-11) 0 var(--space-10);
-  border-bottom: 1px solid var(--rule);
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: var(--space-8);
-  align-items: center;
-}
-.hero-text { min-width: 0; }
-.hero-figure {
+  padding: var(--space-7) 0 0;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
 }
-.hero-mascot {
-  width: clamp(220px, 32vw, 360px);
-  height: clamp(220px, 32vw, 360px);
+.hero + .section {
+  padding-top: var(--space-6);
+}
+.hero-shrine {
+  margin-top: var(--space-5);
+  width: 100%;
+  display: flex; justify-content: center;
+}
+.hero-shrine .shrine {
+  width: 100%;
+  height: auto;
+  cursor: default;
+  user-select: none;
+  display: block;
 }
 .hero-wordmark {
   font-family: var(--font-display);
@@ -554,6 +560,158 @@
   .hearth.is-out .ember { opacity: 0 !important; }
 }
 
+/* ---------- Pixel shrine, placeholder pixel-art scene under the hero.
+   80x40 logical pixels rendered as crisp pixels. Two interactions:
+   the flame cycles lit→dim→out, the star twinkles. Production sprite
+   will be redrawn in Claude Design. */
+.shrine {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+.shrine,
+.shrine * { outline: none; }
+
+/* Sun (.star), twinkles on click; idle pulsating glow; hover scale */
+.shrine .star {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 240ms cubic-bezier(.2, .8, .2, 1);
+}
+.shrine .star:hover { transform: scale(1.15); }
+.shrine .star.is-twinkling {
+  animation: shrine-star-twinkle 800ms cubic-bezier(.4, 0, .2, 1);
+}
+.shrine .star-hit { cursor: pointer; }
+
+/* Twinkle-only corner sparkles (click reward) */
+.shrine .star-rays { opacity: 0; transition: opacity 200ms; }
+.shrine .star.is-twinkling .star-rays { opacity: 1; }
+
+/* Pulsating glow, the four ray-tip extensions fade in/out continuously */
+.shrine .star-glow {
+  animation: shrine-sun-glow 2400ms ease-in-out infinite;
+}
+@keyframes shrine-sun-glow {
+  0%, 100% { opacity: 0; }
+  50%      { opacity: 0.85; }
+}
+
+@keyframes shrine-star-twinkle {
+  0%   { transform: scale(1)   rotate(0deg);   }
+  35%  { transform: scale(1.6) rotate(20deg);  }
+  70%  { transform: scale(1.2) rotate(-10deg); }
+  100% { transform: scale(1)   rotate(0deg);   }
+}
+
+/* Cloud, idle float, puffs on click */
+.shrine .cloud {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: shrine-cloud-float 5400ms ease-in-out infinite;
+}
+.shrine .cloud-hit { cursor: pointer; }
+.shrine .cloud.is-puffed .cloud-body {
+  animation: shrine-cloud-puff 600ms cubic-bezier(.2, .8, .3, 1);
+}
+@keyframes shrine-cloud-float {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(0, -1.4px); }
+}
+/* Opacity-only pulse, no scale (pixel art breaks under fractional scale) */
+@keyframes shrine-cloud-puff {
+  0%   { opacity: 0.55; }
+  30%  { opacity: 1; }
+  100% { opacity: 0.55; }
+}
+
+/* Lightning bolt, hidden by default; double-flashes on cloud click */
+.shrine .cloud-bolt { opacity: 0; }
+.shrine .cloud.is-puffed .cloud-bolt {
+  animation: shrine-cloud-bolt 600ms cubic-bezier(.4, 0, .2, 1);
+}
+@keyframes shrine-cloud-bolt {
+  0%   { opacity: 0; }
+  10%  { opacity: 1; }
+  22%  { opacity: 0; }
+  32%  { opacity: 1; }
+  60%  { opacity: 0.6; }
+  100% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .shrine .cloud.is-puffed .cloud-bolt { animation: none; opacity: 0.7; }
+}
+
+/* Pillars, rumble on click */
+.shrine .pillar {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+}
+.shrine .pillar-hit { cursor: pointer; }
+.shrine .pillar.is-rumbling .pillar-body {
+  animation: shrine-pillar-rumble 750ms cubic-bezier(.36, .07, .19, .97);
+}
+@keyframes shrine-pillar-rumble {
+  0%, 100% { transform: translateX(0); }
+  10%      { transform: translateX(-0.6px); }
+  25%      { transform: translateX( 0.6px); }
+  40%      { transform: translateX(-0.4px); }
+  55%      { transform: translateX( 0.4px); }
+  70%      { transform: translateX(-0.2px); }
+  85%      { transform: translateX( 0.2px); }
+}
+
+/* Flame, three-state cycle */
+.shrine .flame-group {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  transition: opacity 500ms cubic-bezier(.4, 0, .2, 1),
+              transform 500ms cubic-bezier(.4, 0, .2, 1);
+}
+.shrine.is-lit .flame-group { opacity: 1;    transform: scale(1); }
+.shrine.is-dim .flame-group { opacity: 0.85; transform: scale(0.55); }
+.shrine.is-out .flame-group { opacity: 0;    transform: scale(0.4); }
+
+.shrine .flame-flicker {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: shrine-flame-flicker 1600ms cubic-bezier(.4, 0, .2, 1) infinite;
+}
+.shrine.is-out .flame-flicker { animation: none; }
+@keyframes shrine-flame-flicker {
+  0%, 100% { transform: scaleY(1)    scaleX(1); }
+  35%      { transform: scaleY(1.10) scaleX(0.95); }
+  70%      { transform: scaleY(0.94) scaleX(1.04); }
+}
+
+.shrine .flame-hit { cursor: pointer; }
+
+/* Altar glow under the flame */
+.shrine .altar-glow { transition: opacity 500ms cubic-bezier(.4, 0, .2, 1); }
+.shrine.is-lit .altar-glow { opacity: 0.6; }
+.shrine.is-dim .altar-glow { opacity: 0.3; }
+.shrine.is-out .altar-glow { opacity: 0; }
+
+/* Smoke, only when out */
+.shrine .smoke { transform-box: fill-box; transform-origin: center; opacity: 0; }
+.shrine.is-out .smoke {
+  animation: shrine-smoke-rise 4200ms cubic-bezier(.3, .1, .4, 1) infinite;
+}
+.shrine .smoke.s2 { animation-delay: 1400ms; }
+.shrine .smoke.s3 { animation-delay: 2800ms; }
+@keyframes shrine-smoke-rise {
+  0%   { opacity: 0;   transform: translate(0, 0) scale(0.7); }
+  25%  { opacity: 0.5; }
+  100% { opacity: 0;   transform: translate(0, -10px) scale(1.4); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shrine .flame-group { transition: opacity 200ms; transform: none !important; }
+  .shrine .flame-flicker,
+  .shrine .smoke,
+  .shrine .star.is-twinkling { animation: none !important; }
+  .shrine.is-lit .altar-glow { opacity: 0.6; }
+}
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
@@ -565,8 +723,5 @@
   .nav-links { gap: var(--space-5); }
   .hero {
     padding: var(--space-9) 0 var(--space-8);
-    grid-template-columns: 1fr;
-    gap: var(--space-6);
   }
-  .hero-figure { order: 1; }
 }
