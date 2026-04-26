@@ -32,12 +32,22 @@
   text-decoration: none;
   background: transparent;
   border: 0;
-  padding: 0;
+  padding: 0 0 2px;
   cursor: pointer;
-  transition: color var(--dur-fast) var(--ease-standard);
+  border-bottom: 1px solid transparent;
+  transition: color var(--dur-fast) var(--ease-standard),
+              border-color var(--dur-fast) var(--ease-standard);
 }
-.nav-link:hover { color: var(--accent); }
-.nav-link.active { color: var(--fg); }
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: var(--accent);
+  border-bottom-color: var(--accent-wash);
+  outline: none;
+}
+.nav-link.active {
+  color: var(--fg);
+  border-bottom-color: var(--accent-wash);
+}
 
 /* ---------- Hero ----------
    Hero has no bottom border or bottom padding. The PixelShrine fills
