@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import Section from '../components/Section.astro';
 import ProjectList from '../components/ProjectList.astro';
+import BackToTop from '../components/BackToTop.astro';
 import { PROJECTS } from '../data/projects';
 ---
 
@@ -11,4 +12,5 @@ import { PROJECTS } from '../data/projects';
   <Section eyebrow="§ Featured" title="Pinned Work">
     <ProjectList projects={PROJECTS.slice(0, 4)} cta />
   </Section>
+  <BackToTop />
 </Layout>

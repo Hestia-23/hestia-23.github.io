@@ -1,0 +1,34 @@
+---
+import ChevronUp from './icons/ChevronUp.astro';
+---
+
+<button class="back-to-top" type="button" aria-label="Back to top" hidden>
+  <ChevronUp />
+</button>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('.back-to-top');
+  if (btn) {
+    let pending = false;
+    const onScroll = () => {
+      if (pending) return;
+      pending = true;
+      requestAnimationFrame(() => {
+        const threshold = window.innerHeight * 0.8;
+        const visible = window.scrollY > threshold;
+        btn.toggleAttribute('hidden', !visible);
+        pending = false;
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    btn.addEventListener('click', () => {
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({
+        top: 0,
+        behavior: reducedMotion ? 'auto' : 'smooth',
+      });
+    });
+  }
+</script>
