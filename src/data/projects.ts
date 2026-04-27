@@ -9,6 +9,11 @@ export type Project = {
   body: string[];
   url?: string;
   repoUrl?: string;
+  socials?: {
+    x?: string;
+    reddit?: string;
+    youtube?: string;
+  };
   status?: 'Active' | 'In progress' | 'Archived' | 'Volunteer';
 };
 
@@ -29,6 +34,11 @@ export const PROJECTS: Project[] = [
     ],
     url: 'https://gamevox.com/',
     repoUrl: 'https://github.com/gamevoxvoice',
+    socials: {
+      x: 'https://x.com/gamevoxapp',
+      reddit: 'https://reddit.com/r/GameVoxApp',
+      youtube: 'https://youtube.com/@GameVoxApp',
+    },
   },
   {
     slug: 'discord-alternatives',

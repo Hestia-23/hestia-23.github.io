@@ -2,6 +2,9 @@
 import Layout from '../../layouts/Layout.astro';
 import Section from '../../components/Section.astro';
 import BackLink from '../../components/BackLink.astro';
+import X from '../../components/icons/brand/X.astro';
+import Reddit from '../../components/icons/brand/Reddit.astro';
+import YouTube from '../../components/icons/brand/YouTube.astro';
 import { PROJECTS, type Project } from '../../data/projects';
 
 export function getStaticPaths() {
@@ -47,6 +50,24 @@ const { project } = Astro.props;
         <div class="project-spec-row">
           <dt>Source</dt>
           <dd><a href={project.repoUrl}>{project.repoUrl.replace(/^https?:\/\/(www\.)?/, '')}</a></dd>
+        </div>
+      )}
+      {project.socials && (
+        <div class="project-spec-row">
+          <dt>Socials</dt>
+          <dd>
+            <div class="project-socials">
+              {project.socials.x && (
+                <a class="project-social" href={project.socials.x} aria-label="X"><X /></a>
+              )}
+              {project.socials.reddit && (
+                <a class="project-social" href={project.socials.reddit} aria-label="Reddit"><Reddit /></a>
+              )}
+              {project.socials.youtube && (
+                <a class="project-social" href={project.socials.youtube} aria-label="YouTube"><YouTube /></a>
+              )}
+            </div>
+          </dd>
         </div>
       )}
     </dl>

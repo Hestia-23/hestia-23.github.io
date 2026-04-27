@@ -881,6 +881,29 @@
 
 .project-detail-subtitle { color: var(--fg-muted); }
 
+.project-socials {
+  display: inline-flex;
+  gap: var(--space-4);
+  align-items: center;
+}
+.project-social {
+  display: inline-flex;
+  color: var(--fg-muted);
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease-standard),
+              transform var(--dur-base) var(--ease-out);
+}
+.project-social:hover,
+.project-social:focus-visible {
+  color: var(--accent);
+  outline: none;
+  transform: translateY(-1px);
+}
+.project-social .icon { width: 18px; height: 18px; }
+@media (prefers-reduced-motion: reduce) {
+  .project-social { transition: color var(--dur-fast); transform: none !important; }
+}
+
 @media (max-width: 540px) {
   .project-spec-row { grid-template-columns: 1fr; gap: 2px; }
   .project-spec dd { font-size: var(--step-0); }
