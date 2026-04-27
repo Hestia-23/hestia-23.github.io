@@ -28,6 +28,7 @@ export const PROJECTS: Project[] = [
       'A lot of this portfolio\'s design discipline comes from trying to keep that work coherent across all four surfaces.',
     ],
     url: 'https://gamevox.com/',
+    repoUrl: 'https://github.com/gamevoxvoice',
   },
   {
     slug: 'discord-alternatives',

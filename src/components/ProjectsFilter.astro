@@ -45,7 +45,7 @@
     const input = container.querySelector<HTMLInputElement>('[data-projects-filter-input]');
     const sortSelect = container.querySelector<HTMLSelectElement>('[data-projects-filter-sort]');
     const empty = container.querySelector<HTMLElement>('[data-projects-filter-empty]');
-    const list = container.nextElementSibling as HTMLElement | null;
+    const list = container.parentElement?.querySelector<HTMLElement>('.project-list') ?? null;
     if (!input || !sortSelect || !empty || !list) return;
 
     const cards = Array.from(list.querySelectorAll<HTMLElement>('.project-card:not(.project-card-placeholder)'));
