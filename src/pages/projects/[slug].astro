@@ -5,6 +5,21 @@ import BackLink from '../../components/BackLink.astro';
 import X from '../../components/icons/brand/X.astro';
 import Reddit from '../../components/icons/brand/Reddit.astro';
 import YouTube from '../../components/icons/brand/YouTube.astro';
+import Go from '../../components/icons/brand/Go.astro';
+import Wails from '../../components/icons/brand/Wails.astro';
+import Html5 from '../../components/icons/brand/Html5.astro';
+import Css from '../../components/icons/brand/Css.astro';
+import JavaScript from '../../components/icons/brand/JavaScript.astro';
+import TypeScript from '../../components/icons/brand/TypeScript.astro';
+import React from '../../components/icons/brand/React.astro';
+import TailwindCSS from '../../components/icons/brand/TailwindCSS.astro';
+import RadixUI from '../../components/icons/brand/RadixUI.astro';
+import MobX from '../../components/icons/brand/MobX.astro';
+import Lucide from '../../components/icons/brand/Lucide.astro';
+import Vite from '../../components/icons/brand/Vite.astro';
+import AstroIcon from '../../components/icons/brand/Astro.astro';
+import AlpineJs from '../../components/icons/brand/AlpineJs.astro';
+import Htmx from '../../components/icons/brand/Htmx.astro';
 import { PROJECTS, type Project } from '../../data/projects';
 
 export function getStaticPaths() {
@@ -19,6 +34,24 @@ interface Props {
 }
 
 const { project } = Astro.props;
+
+const STACK_ICONS: Record<string, any> = {
+  'Go': Go,
+  'Wails': Wails,
+  'HTML': Html5,
+  'CSS': Css,
+  'JavaScript': JavaScript,
+  'TypeScript': TypeScript,
+  'React': React,
+  'Tailwind CSS': TailwindCSS,
+  'Radix UI': RadixUI,
+  'MobX': MobX,
+  'Lucide': Lucide,
+  'Vite': Vite,
+  'Astro': AstroIcon,
+  'Alpine.js': AlpineJs,
+  'htmx': Htmx,
+};
 ---
 
 <Layout title={`Hestia · ${project.title}`}>
@@ -28,7 +61,20 @@ const { project } = Astro.props;
     <dl class="project-spec">
       <div class="project-spec-row">
         <dt>Stack</dt>
-        <dd>{project.stack.join(' · ')}</dd>
+        <dd>
+          <div class="project-stack">
+            {project.stack.map((name) => {
+              const Icon = STACK_ICONS[name];
+              return Icon ? (
+                <span class="project-stack-icon" data-tooltip={name} role="img" aria-label={name}>
+                  <Icon />
+                </span>
+              ) : (
+                <span class="project-stack-text">{name}</span>
+              );
+            })}
+          </div>
+        </dd>
       </div>
       {project.status && (
         <div class="project-spec-row">
