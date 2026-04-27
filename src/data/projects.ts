@@ -56,6 +56,23 @@ export const PROJECTS: Project[] = [
     repoUrl: 'https://github.com/Hestia-23/discordalternatives',
   },
   {
+    slug: 'anna',
+    title: 'Anna',
+    subtitle: 'Period and fertility tracker',
+    date: 'In development',
+    description:
+      'A free, open-source period and fertility tracker for Android and iOS. Offline-first, zero-knowledge sync, no ads, no telemetry.',
+    stack: ['Kotlin', 'Rust'],
+    status: 'In progress',
+    body: [
+      'Anna is a free, open-source period and fertility tracker for Android and iOS, rooted in womanhood and Catholic tradition.',
+      'Offline-first, zero-knowledge sync, no ads, no telemetry, no email or phone required.',
+      'Named for St. Anne, patroness of motherhood.',
+    ],
+    url: 'https://annahq.org',
+    repoUrl: 'https://github.com/annahq/anna',
+  },
+  {
     slug: 'hearth-ui',
     title: 'Hearth UI',
     subtitle: 'An interactive UI playground',
