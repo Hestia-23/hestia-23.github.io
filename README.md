@@ -1,35 +1,35 @@
 # hestia-23.github.io
 
-personal portfolio. astro 6, typescript strict, vanilla css, deployed to github pages. live at https://hestia-23.github.io.
+Personal portfolio. Astro 6, TypeScript strict, vanilla CSS, deployed to GitHub Pages. Live at https://hestia-23.github.io.
 
-## structure
+## Structure
 
 - `src/`
   - `pages/` — file-based routes. `index.astro`, `about.astro`, `projects.astro`, `projects/[slug].astro` (one page per project, pre-rendered), `contact.astro`.
-  - `components/` — nav, hero, section, project row/list, contact list, footer, back link.
-  - `components/icons/` — lucide icons (chevrons-left, chevrons-right, mail). brand marks live under `components/icons/brand/`.
-  - `data/` — `projects.ts`, `contact.ts`. typed, hand-edited.
+  - `components/` — nav, hero, section, project card/list, projects filter, contact list, footer, back link, back-to-top, pixel shrine.
+  - `components/icons/` — Lucide icons (chevrons-left, chevrons-right, chevron-up, mail). Brand marks live under `components/icons/brand/`.
+  - `data/` — `projects.ts`, `contact.ts`. Typed, hand-edited.
   - `layouts/Layout.astro` — single layout; wraps every page with nav + footer and imports the stylesheets.
-  - `styles/tokens.css` — design tokens (colors, type, space, motion). imported globally.
-  - `styles/components.css` — class-based component rules (`.nav`, `.hero`, `.section`, `.project-row`, `.contact-list`, `.btn*`, `.icon`). imported globally.
-- `public/` — static assets served at `/`. fonts at `/fonts/`, favicon at `/favicon.svg`.
+  - `styles/tokens.css` — design tokens (colors, type, space, motion). Imported globally.
+  - `styles/components.css` — class-based component rules. Imported globally.
+- `public/` — static assets served at `/`. Fonts at `/fonts/`, favicon at `/favicon.svg`.
 
-## local dev
+## Local Dev
 
-requires node >=22.12 and npm.
+Requires Node >=22.12 and npm.
 
-| command | action |
+| Command | Action |
 | ------- | ------ |
-| `npm install` | install dependencies |
-| `npm run dev` | dev server at http://localhost:4321 |
-| `npm run build` | static build to `dist/` |
-| `npm run preview` | serve the build locally |
-| `npm run astro ...` | astro cli passthrough |
+| `npm install` | Install dependencies |
+| `npm run dev` | Dev server at http://localhost:4321 |
+| `npm run build` | Static build to `dist/` |
+| `npm run preview` | Serve the build locally |
+| `npm run astro ...` | Astro CLI passthrough |
 
-zero client-side javascript ships. every interaction is css (hover, focus, `prefers-color-scheme` dark mode, `prefers-reduced-motion`).
+Minimal client-side JavaScript: only the back-to-top button, projects filter, and pixel shrine ship interactive scripts. Everything else is CSS (hover, focus, `prefers-color-scheme` dark mode, `prefers-reduced-motion`).
 
-## deploy
+## Deploy
 
-github actions handles it. `.github/workflows/deploy.yml` fires on push to `master` (and manual `workflow_dispatch`). the build runs via `withastro/action@v6`; deploy via `actions/deploy-pages@v5`.
+GitHub Actions handles it. `.github/workflows/deploy.yml` fires on push to `master` (and manual `workflow_dispatch`). The build runs via `withastro/action@v6`; deploy via `actions/deploy-pages@v5`.
 
-one-time repo setting: settings → pages → source must be "github actions", not a branch.
+One-time repo setting: Settings → Pages → Source must be "GitHub Actions", not a branch.
