@@ -21,10 +21,10 @@ export const PROJECTS: Project[] = [
   {
     slug: 'gamevox',
     title: 'GameVox',
-    subtitle: 'Privacy-focused voice chat',
+    subtitle: 'Privacy-focused chat app',
     date: 'Open beta · March 2026',
     description:
-      'Community manager and UI specialist. Work spans the website, agent dashboard, help center, and client UI.',
+      'Community manager and UI specialist. Work spans marketing, socials, and frontend development.',
     stack: ['Go', 'Wails', 'HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Tailwind CSS', 'Radix UI', 'MobX', 'Lucide', 'Vite', 'Astro', 'Alpine.js', 'htmx'],
     status: 'Active',
     body: [
