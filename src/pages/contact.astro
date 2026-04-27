@@ -2,11 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 import Section from '../components/Section.astro';
 import ContactList from '../components/ContactList.astro';
+import ContactIcon from '../components/icons/Contact.astro';
 import { CONTACT } from '../data/contact';
 ---
 
 <Layout title="Hestia · Contact">
-  <Section eyebrow="§ Contact" title="One address, read weekly.">
+  <Section title="One address, read weekly." icon={ContactIcon}>
     <div class="prose contact-prose">
       <p>Email for business inquiries only. Mention me on X (formerly Twitter) for quick replies.</p>
     </div>

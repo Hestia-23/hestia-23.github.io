@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Section from '../components/Section.astro';
+import HeartHandshake from '../components/icons/HeartHandshake.astro';
+import ChevronsRight from '../components/icons/ChevronsRight.astro';
 import AstroIcon from '../components/icons/brand/Astro.astro';
 import Html5 from '../components/icons/brand/Html5.astro';
 import Css from '../components/icons/brand/Css.astro';
@@ -9,24 +11,31 @@ import TypeScript from '../components/icons/brand/TypeScript.astro';
 ---
 
 <Layout title="Hestia · About">
-  <Section eyebrow="§ About" title="Frontend, with care.">
+  <Section title="Frontend, with care." icon={HeartHandshake}>
     <div class="about-grid">
       <aside class="about-aside">
         <dl>
+          <dt>OS</dt>
+          <dd>
+            <div class="os-icons" aria-label="GrapheneOS, CachyOS">
+              <a class="os-icon" href="https://grapheneos.org/" target="_blank" rel="noopener noreferrer" data-tooltip="GrapheneOS" aria-label="GrapheneOS">
+                <svg class="os-icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="m6.953 7.244 3.458-1.97a1.901 1.901 0 0 1-.108-.608c0-.835.608-1.525 1.407-1.67V0h.58v2.995a1.704 1.704 0 0 1 1.407 1.67c0 .219-.045.418-.118.609l3.468 1.97c.127-.146.281-.273.454-.382a1.705 1.705 0 0 1 2.151.382l2.596-1.498.29.508-2.595 1.498a1.69 1.69 0 0 1-1.244 2.242v4.012a1.69 1.69 0 0 1 1.244 2.242l2.596 1.498-.29.508-2.597-1.498a1.705 1.705 0 0 1-2.151.382 2.065 2.065 0 0 1-.454-.382c-1.153.654-2.306 1.317-3.468 1.97.073.19.118.39.118.608 0 .835-.608 1.525-1.407 1.67V24h-.58v-2.995a1.704 1.704 0 0 1-1.407-1.67c0-.219.045-.418.108-.609l-3.458-1.97a2.065 2.065 0 0 1-.454.382 1.705 1.705 0 0 1-2.151-.382l-2.596 1.498-.29-.508 2.595-1.498a1.69 1.69 0 0 1 1.244-2.242V9.994a1.69 1.69 0 0 1-1.244-2.242L1.461 6.254l.29-.508 2.597 1.498a1.705 1.705 0 0 1 2.151-.382c.173.11.327.236.454.382Zm9.803 9.004a1.682 1.682 0 0 1 .128-1.425 1.702 1.702 0 0 1 1.234-.835v-3.976a1.702 1.702 0 0 1-1.234-.835 1.682 1.682 0 0 1-.128-1.425L13.29 5.773c-.318.363-.772.59-1.289.59-.517 0-.971-.227-1.289-.59L7.244 7.752c.163.454.136.98-.128 1.425a1.702 1.702 0 0 1-1.234.835v3.976c.5.073.962.363 1.234.835.264.445.291.971.128 1.425l3.467 1.979c.318-.363.772-.59 1.289-.59.517 0 .971.227 1.289.59z"/></svg>
+              </a>
+              <a class="os-icon" href="https://cachyos.org/" target="_blank" rel="noopener noreferrer" data-tooltip="CachyOS" aria-label="CachyOS">
+                <svg class="os-icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5.301 2.646 0 11.771l5.541 9.583h11.486l2.904-5.017H8.102l-2.56-4.429L8.067 7.54h6.063l2.83-4.893ZM20.058 4.12a.748.748 0 0 0 0 1.496.748.748 0 0 0 0-1.496m-1.983 4.303a1.45 1.45 0 0 0 0 2.9 1.45 1.45 0 0 0 0-2.9m4.02 3.98a1.904 1.904 0 0 0 0 3.809 1.904 1.904 0 0 0 0-3.81"/></svg>
+              </a>
+            </div>
+          </dd>
           <dt>Stack</dt>
           <dd>
             <div class="stack-icons" aria-label="Astro, HTML5, CSS, JavaScript, TypeScript">
               <a class="stack-icon" href="https://astro.build/" target="_blank" rel="noopener noreferrer" data-tooltip="Astro" aria-label="Astro"><AstroIcon /></a>
-              <a class="stack-icon" href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noopener noreferrer" data-tooltip="HTML5" aria-label="HTML5"><Html5 /></a>
-              <a class="stack-icon" href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noopener noreferrer" data-tooltip="CSS" aria-label="CSS"><Css /></a>
-              <a class="stack-icon" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noopener noreferrer" data-tooltip="JavaScript" aria-label="JavaScript"><JavaScript /></a>
+              <a class="stack-icon" href="https://html.spec.whatwg.org/" target="_blank" rel="noopener noreferrer" data-tooltip="HTML5" aria-label="HTML5"><Html5 /></a>
+              <a class="stack-icon" href="https://www.w3.org/Style/CSS/Overview.en.html" target="_blank" rel="noopener noreferrer" data-tooltip="CSS" aria-label="CSS"><Css /></a>
+              <a class="stack-icon" href="https://www.ecma-international.org/publications-and-standards/standards/ecma-262/" target="_blank" rel="noopener noreferrer" data-tooltip="JavaScript" aria-label="JavaScript"><JavaScript /></a>
               <a class="stack-icon" href="https://www.typescriptlang.org/" target="_blank" rel="noopener noreferrer" data-tooltip="TypeScript" aria-label="TypeScript"><TypeScript /></a>
             </div>
           </dd>
-          <dt>Currently</dt>
-          <dd>GameVox</dd>
-          <dt>Learning</dt>
-          <dd>Full stack, cybersecurity, data analytics</dd>
           <dt>Privacy</dt>
           <dd>
             <div class="privacy-icons">
@@ -54,11 +63,12 @@ import TypeScript from '../components/icons/brand/TypeScript.astro';
               <a class="privacy-icon" href="https://ente.com/auth/" target="_blank" rel="noopener noreferrer" data-tooltip="Ente Auth" aria-label="Ente Auth">
                 <svg class="privacy-icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M13.0569.404c-1.9042.0042-3.8052.4582-5.4881 1.3223.1477.2404.2528.506.3086.7794.283 1.383-.5717 2.6728-1.8945 4.3458l-.6855.8594a1.165 1.165 0 0 1-.912.4356 1.1517 1.1517 0 0 1-.627-.1856c-.3196-.2084-.538-.3299-1.2343-.7832-2.042 4.897-.5548 11.2114 3.8826 14.2446 3.5434 2.5674 8.7443 2.8326 12.6499.9434.7786-.3952 1.5287-.838 2.0663-1.4004a2.7886 2.7886 0 0 0 .9238-2.0724c0-1.3257-.9333-2.4682-2.2323-2.7325-.5056-.1094-1.2926-.0854-1.9863.3399-.2262.1083-.4475.2277-.6679.3437-.6341.3344-.7472.3702-1.4374.588-1.9956.6344-6.0325.556-7.0662-1.6388-.1441-.6302.424-.7857.9258-.7852 2.992-.0074 5.9841-.0002 8.9762-.0059.781-.0032 1.5788-.0068 2.3339-.2246 2.302-.5946 3.43-2.7624 3.0272-5.2463-.6121-3.973-3.577-7.5172-7.4606-8.633C15.3562.563 14.2058.4015 13.0569.404zM5.4576.9646c-.7885.0002-1.5143.4442-1.9023 1.0723-.3962-.325-.9281-.5137-1.4472-.5137s-1.0492.18-1.4824.588C.1608 2.5486-.0652 3.1988.0164 3.826c.0856.6424.431 1.1825.9882 1.711.6832.6479 1.6854 1.2787 2.9257 2.0567l.0488.0293a.7427.7427 0 0 0 .4062.1211.7655.7655 0 0 0 .5938-.2832c.011-.013.0208-.0274.0312-.041 1.6662-2.07 2.759-3.4236 2.4706-4.8342-.126-.6165-.5471-1.1606-1.1327-1.4238-.2125-.0973-.5208-.1973-.8906-.1973Zm-3.6757 1.543c.3428 0 .6211.2777.6211.6192 0 .3415-.2783.6172-.621.6172-.3428 0-.6211-.2757-.6211-.6172 0-.3415.2783-.6192.621-.6192zm11.4449 3.6622c1.6882.0106 3.4584.8528 4.1756 2.4923.0547.1383.0885.2821.0703.422-.0512.3676-.387.498-.7168.498-2.0929.0125-5.2392.005-7.4137.002-.288-.0092-.3718-.0665-.3906-.0665-.2202-.0814-.3686-.2946-.3574-.5293.0057-.2033.0986-.4013.1933-.5801.8201-1.5407 2.634-2.3014 4.4393-2.2384Z"/></svg>
               </a>
-              <a class="privacy-icon" href="https://grapheneos.org/" target="_blank" rel="noopener noreferrer" data-tooltip="GrapheneOS" aria-label="GrapheneOS">
-                <svg class="privacy-icon-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="m6.953 7.244 3.458-1.97a1.901 1.901 0 0 1-.108-.608c0-.835.608-1.525 1.407-1.67V0h.58v2.995a1.704 1.704 0 0 1 1.407 1.67c0 .219-.045.418-.118.609l3.468 1.97c.127-.146.281-.273.454-.382a1.705 1.705 0 0 1 2.151.382l2.596-1.498.29.508-2.595 1.498a1.69 1.69 0 0 1-1.244 2.242v4.012a1.69 1.69 0 0 1 1.244 2.242l2.596 1.498-.29.508-2.597-1.498a1.705 1.705 0 0 1-2.151.382 2.065 2.065 0 0 1-.454-.382c-1.153.654-2.306 1.317-3.468 1.97.073.19.118.39.118.608 0 .835-.608 1.525-1.407 1.67V24h-.58v-2.995a1.704 1.704 0 0 1-1.407-1.67c0-.219.045-.418.108-.609l-3.458-1.97a2.065 2.065 0 0 1-.454.382 1.705 1.705 0 0 1-2.151-.382l-2.596 1.498-.29-.508 2.595-1.498a1.69 1.69 0 0 1 1.244-2.242V9.994a1.69 1.69 0 0 1-1.244-2.242L1.461 6.254l.29-.508 2.597 1.498a1.705 1.705 0 0 1 2.151-.382c.173.11.327.236.454.382Zm9.803 9.004a1.682 1.682 0 0 1 .128-1.425 1.702 1.702 0 0 1 1.234-.835v-3.976a1.702 1.702 0 0 1-1.234-.835 1.682 1.682 0 0 1-.128-1.425L13.29 5.773c-.318.363-.772.59-1.289.59-.517 0-.971-.227-1.289-.59L7.244 7.752c.163.454.136.98-.128 1.425a1.702 1.702 0 0 1-1.234.835v3.976c.5.073.962.363 1.234.835.264.445.291.971.128 1.425l3.467 1.979c.318-.363.772-.59 1.289-.59.517 0 .971.227 1.289.59z"/></svg>
-              </a>
             </div>
           </dd>
+          <dt>Currently</dt>
+          <dd>GameVox</dd>
+          <dt>Learning</dt>
+          <dd>Full stack, cybersecurity, data analytics</dd>
         </dl>
       </aside>
       <div class="prose">
@@ -66,6 +76,11 @@ import TypeScript from '../components/icons/brand/TypeScript.astro';
         <p>Everything I ship gets time. No vibe coding, no shortcuts. The interfaces I build are the result of layered planning, not first-pass guesses.</p>
         <p>Every feature passes through several layers before it lands. The GitHub issue or project entry frames the work. Private notes hold the messy thinking and trade-offs. The resolution comes back into the issue once it is clear. Only then do I enter plan mode and start writing code.</p>
         <p>What I ship, I'm willing to defend. Privacy-first by default. No trackers, no analytics, no cookies.</p>
+        <div class="project-list-cta">
+          <a class="project-list-cta-link" href="/uses/">
+            What I use <ChevronsRight class="arrow" />
+          </a>
+        </div>
       </div>
     </div>
   </Section>
@@ -73,7 +88,8 @@ import TypeScript from '../components/icons/brand/TypeScript.astro';
 
 <style>
   .stack-icons,
-  .privacy-icons {
+  .privacy-icons,
+  .os-icons {
     display: inline-flex;
     flex-wrap: wrap;
     gap: var(--space-3);
@@ -82,7 +98,8 @@ import TypeScript from '../components/icons/brand/TypeScript.astro';
   }
 
   .stack-icon,
-  .privacy-icon {
+  .privacy-icon,
+  .os-icon {
     position: relative;
     display: inline-flex;
     width: 26px;
@@ -91,7 +108,8 @@ import TypeScript from '../components/icons/brand/TypeScript.astro';
     text-decoration: none;
   }
   .stack-icon :global(.icon),
-  .privacy-icon-svg {
+  .privacy-icon-svg,
+  .os-icon-svg {
     width: 26px;
     height: 26px;
     color: var(--fg-muted);
@@ -100,13 +118,15 @@ import TypeScript from '../components/icons/brand/TypeScript.astro';
                 filter var(--dur-base) var(--ease-out);
   }
   .stack-icon:hover :global(.icon),
-  .privacy-icon:hover .privacy-icon-svg {
+  .privacy-icon:hover .privacy-icon-svg,
+  .os-icon:hover .os-icon-svg {
     color: var(--accent);
     filter: drop-shadow(0 0 4px var(--accent-wash));
   }
 
   .stack-icon::after,
-  .privacy-icon::after {
+  .privacy-icon::after,
+  .os-icon::after {
     content: attr(data-tooltip);
     position: absolute;
     bottom: calc(100% + 8px);
@@ -128,14 +148,17 @@ import TypeScript from '../components/icons/brand/TypeScript.astro';
                 transform var(--dur-fast) var(--ease-out);
   }
   .stack-icon:hover::after,
-  .privacy-icon:hover::after {
+  .privacy-icon:hover::after,
+  .os-icon:hover::after {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
   }
   @media (prefers-reduced-motion: reduce) {
     .stack-icon :global(.icon),
     .privacy-icon-svg,
+    .os-icon-svg,
     .stack-icon::after,
-    .privacy-icon::after { transition: none; }
+    .privacy-icon::after,
+    .os-icon::after { transition: none; }
   }
 </style>

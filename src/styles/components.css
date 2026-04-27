@@ -105,7 +105,12 @@
 
 .section { padding: var(--space-9) 0; }
 .section + .section { border-top: 1px solid var(--rule); }
+.section:has(+ .footer) { padding-bottom: var(--space-6); }
+.nav + .section { padding-top: var(--space-6); }
 .section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
   font-family: var(--font-body);
   font-size: 12px;
   font-weight: 500;
@@ -114,7 +119,14 @@
   color: var(--fg-subtle);
   margin: 0 0 var(--space-4);
 }
+.section-eyebrow-icon { width: 1.25em; height: 1.25em; }
+.section-title-icon { width: 1em; height: 1em; flex-shrink: 0; color: var(--accent); }
+.section-centered .section-title { justify-content: center; margin-bottom: var(--space-5); }
+.section-centered .section-eyebrow { justify-content: center; }
 .section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
   font-family: var(--font-display);
   font-weight: 500;
   font-size: var(--step-4);
@@ -361,8 +373,8 @@
 }
 .prose p { margin: 0 0 var(--space-5); }
 .prose p + p { margin-top: 0; }
-.prose a { color: var(--accent); text-decoration: underline; text-decoration-color: var(--accent-wash); text-underline-offset: 0.2em; }
-.prose a:hover { color: var(--accent-hover); text-decoration-color: var(--accent); }
+.prose a:not(.project-list-cta-link) { color: var(--accent); text-decoration: underline; text-decoration-color: var(--accent-wash); text-underline-offset: 0.2em; }
+.prose a:not(.project-list-cta-link):hover { color: var(--accent-hover); text-decoration-color: var(--accent); }
 .prose em { font-family: var(--font-display); font-style: italic; font-size: 1.05em; }
 
 .about-grid {
@@ -511,7 +523,6 @@
 }
 
 .footer {
-  margin-top: var(--space-10);
   padding: var(--space-6) 0 var(--space-7);
   border-top: 1px solid var(--rule);
   display: flex;
@@ -523,7 +534,8 @@
 }
 .footer a { color: var(--fg-muted); text-decoration: none; }
 .footer a:hover { color: var(--accent); }
-.footer-ornament { opacity: 0.4; color: var(--fg-subtle); }
+.footer-ornament { opacity: 0.4; color: var(--fg-subtle); display: inline-flex; }
+.footer-ornament .icon { width: 16px; height: 16px; }
 
 .back-link {
   font-family: var(--font-body);

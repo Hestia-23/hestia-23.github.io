@@ -1,0 +1,88 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Section from '../components/Section.astro';
+import CircuitBoard from '../components/icons/CircuitBoard.astro';
+---
+
+<Layout title="Hestia · Uses">
+  <Section title="What I use" icon={CircuitBoard} centered>
+    <div class="uses-grid">
+      <section class="uses-block">
+        <h3 class="uses-heading">Desktop</h3>
+        <dl class="uses-list">
+          <dt>CPU</dt><dd>AMD Ryzen 7 5800X</dd>
+          <dt>CPU Cooler</dt><dd>Arctic Liquid Freezer II 360</dd>
+          <dt>GPU</dt><dd>Asus TUF RTX 3080 12GB OC</dd>
+          <dt>Motherboard</dt><dd>Asus TUF GAMING X570-PLUS</dd>
+          <dt>RAM</dt><dd>2x16GB CL16 3600MHz</dd>
+          <dt>PSU</dt><dd>Seasonic Focus 750w</dd>
+          <dt>Case</dt><dd>Lian Li Lancool III (Black)</dd>
+        </dl>
+      </section>
+
+      <section class="uses-block">
+        <h3 class="uses-heading">Storage</h3>
+        <dl class="uses-list">
+          <dt>System / Boot</dt><dd>500 GB Crucial P5 Plus M.2 NVMe</dd>
+          <dt>Games</dt><dd>2 TB Crucial P5 Plus M.2 NVMe</dd>
+          <dt>Misc</dt><dd>4 TB Crucial MX500 2.5" SATA</dd>
+        </dl>
+      </section>
+
+      <section class="uses-block">
+        <h3 class="uses-heading">Peripherals</h3>
+        <dl class="uses-list">
+          <dt>Monitor</dt><dd>MSI Optix G273QF</dd>
+          <dt>Keyboard</dt><dd>Leopold &middot; Keychron Q Series</dd>
+          <dt>Mouse</dt><dd>Razer Naga X</dd>
+          <dt>Headphones</dt><dd>Sennheiser HD 600</dd>
+          <dt>Microphone</dt><dd>MPM-1000U (USB) &middot; AKG C214 (XLR)</dd>
+        </dl>
+      </section>
+    </div>
+  </Section>
+</Layout>
+
+<style>
+  .uses-grid {
+    display: grid;
+    gap: var(--space-7);
+    max-width: 60ch;
+    margin-inline: auto;
+  }
+  .uses-heading {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    color: var(--fg-subtle);
+    margin: 0 0 var(--space-3);
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid var(--rule);
+  }
+  .uses-list {
+    display: grid;
+    grid-template-columns: minmax(8rem, 12rem) 1fr;
+    column-gap: var(--space-5);
+    row-gap: var(--space-2);
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 15px;
+  }
+  .uses-list dt {
+    color: var(--fg-subtle);
+  }
+  .uses-list dd {
+    color: var(--fg);
+    margin: 0;
+  }
+  @media (max-width: 540px) {
+    .uses-list {
+      grid-template-columns: 1fr;
+      row-gap: var(--space-1);
+    }
+    .uses-list dt { margin-top: var(--space-3); }
+    .uses-list dt:first-of-type { margin-top: 0; }
+  }
+</style>
