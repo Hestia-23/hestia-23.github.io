@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <radialGradient id="warm" cx="80%" cy="110%" r="60%">
+      <stop offset="0%" stop-color="#e0a58a" stop-opacity="0.08"/>
+      <stop offset="60%" stop-color="#e0a58a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="cool" cx="15%" cy="-10%" r="60%">
+      <stop offset="0%" stop-color="#b8ccd4" stop-opacity="0.05"/>
+      <stop offset="60%" stop-color="#b8ccd4" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- background -->
+  <rect width="1200" height="630" fill="#0c2833"/>
+  <rect width="1200" height="630" fill="url(#warm)"/>
+  <rect width="1200" height="630" fill="url(#cool)"/>
+
+  <!-- inner border -->
+  <rect x="24" y="24" width="1152" height="582" fill="none" stroke="#1f3c47" stroke-width="1"/>
+
+  <!-- center vertical hairline -->
+  <line x1="600" y1="72" x2="600" y2="558" stroke="#1f3c47" stroke-width="1"/>
+
+  <!-- left: wordmark + tagline (vertically centered around y=315) -->
+  <g font-family="'EB Garamond', 'Hoefler Text', Garamond, serif" fill="#e6eef0">
+    <text x="96" y="290" font-size="168" letter-spacing="-5">hestia</text>
+  </g>
+  <g font-family="'EB Garamond', 'Hoefler Text', Garamond, serif" font-style="italic" font-size="36" fill="#9cb2b9">
+    <text x="96" y="370">
+      <tspan x="96" dy="0">Frontend developer.</tspan>
+      <tspan x="96" dy="46">UI components, layouts, and</tspan>
+      <tspan x="96" dy="46">design systems, built with</tspan>
+      <tspan x="96" dy="46">care and no shortcuts.</tspan>
+    </text>
+  </g>
+
+  <!-- right: shrine artwork, scaled and right-aligned at top:40% -->
+  <!-- shrine viewBox 0 0 94 40, target 660x220 (xMaxYMid meet) -->
+  <!-- top:40% of 630 = 252, translateY -50% of 220 = -110, so shrine top = 142, bottom = 362 -->
+  <!-- right edge = 1200-96 = 1104; left edge = 1104-660 = 444 -->
+  <!-- with xMaxYMid meet on viewBox 94x40 in 660x220 box: scale = 220/40 = 5.5; content w = 94*5.5 = 517; offset from box left = 660-517 = 143 -->
+  <g transform="translate(587 142) scale(5.5)" shape-rendering="crispEdges">
+    <!-- left pillar -->
+    <g transform="translate(4 0)">
+      <rect fill="#9cb2b9" x="23" y="6"  width="11" height="2"/>
+      <rect fill="#6a848d" x="24" y="8"  width="9"  height="1"/>
+      <rect fill="#6a848d" x="25" y="9"  width="7"  height="26"/>
+      <rect fill="#3f5560" x="26" y="9"  width="1"  height="26"/>
+      <rect fill="#3f5560" x="28" y="9"  width="1"  height="26"/>
+      <rect fill="#3f5560" x="30" y="9"  width="1"  height="26"/>
+      <rect fill="#6a848d" x="24" y="35" width="9"  height="1"/>
+      <rect fill="#9cb2b9" x="23" y="36" width="11" height="2"/>
+    </g>
+
+    <!-- right pillar -->
+    <g transform="translate(-4 0)">
+      <rect fill="#9cb2b9" x="87" y="6"  width="11" height="2"/>
+      <rect fill="#6a848d" x="88" y="8"  width="9"  height="1"/>
+      <rect fill="#6a848d" x="89" y="9"  width="7"  height="26"/>
+      <rect fill="#3f5560" x="90" y="9"  width="1"  height="26"/>
+      <rect fill="#3f5560" x="92" y="9"  width="1"  height="26"/>
+      <rect fill="#3f5560" x="94" y="9"  width="1"  height="26"/>
+      <rect fill="#6a848d" x="88" y="35" width="9"  height="1"/>
+      <rect fill="#9cb2b9" x="87" y="36" width="11" height="2"/>
+    </g>
+
+    <!-- altar + flame -->
+    <g transform="translate(60 36) scale(0.8) translate(-60 -36)">
+      <rect fill="#9cb2b9" x="53" y="26" width="14" height="1"/>
+      <rect fill="#6a848d" x="54" y="27" width="12" height="6"/>
+      <rect fill="#3f5560" x="56" y="29" width="8"  height="1"/>
+      <rect fill="#9cb2b9" x="53" y="33" width="14" height="1"/>
+      <rect fill="#6a848d" x="52" y="34" width="16" height="2"/>
+      <rect fill="#e0a58a" x="55" y="26" width="10" height="1" opacity="0.6"/>
+      <rect fill="#ecb89f" x="57" y="26" width="6"  height="1"/>
+
+      <rect fill="#5c3a2a" x="60" y="13" width="1" height="1"/>
+      <rect fill="#5c3a2a" x="59" y="14" width="1" height="1"/>
+      <rect fill="#5c3a2a" x="61" y="14" width="1" height="1"/>
+      <rect fill="#5c3a2a" x="58" y="15" width="1" height="1"/>
+      <rect fill="#5c3a2a" x="62" y="15" width="1" height="1"/>
+      <rect fill="#5c3a2a" x="64" y="15" width="1" height="1"/>
+      <rect fill="#5c3a2a" x="57" y="16" width="1" height="1"/>
+      <rect fill="#5c3a2a" x="63" y="16" width="1" height="1"/>
+      <rect fill="#5c3a2a" x="56" y="17" width="1" height="1"/>
+      <rect fill="#5c3a2a" x="64" y="17" width="1" height="1"/>
+      <rect fill="#5c3a2a" x="56" y="18" width="1" height="1"/>
+      <rect fill="#5c3a2a" x="64" y="18" width="1" height="1"/>
+      <rect fill="#5c3a2a" x="55" y="19" width="1" height="1"/>
+      <rect fill="#5c3a2a" x="65" y="19" width="1" height="1"/>
+      <rect fill="#5c3a2a" x="55" y="20" width="1" height="1"/>
+      <rect fill="#5c3a2a" x="65" y="20" width="1" height="1"/>
+      <rect fill="#5c3a2a" x="56" y="21" width="1" height="1"/>
+      <rect fill="#5c3a2a" x="64" y="21" width="1" height="1"/>
+      <rect fill="#5c3a2a" x="56" y="22" width="1" height="1"/>
+      <rect fill="#5c3a2a" x="64" y="22" width="1" height="1"/>
+      <rect fill="#5c3a2a" x="57" y="23" width="1" height="1"/>
+      <rect fill="#5c3a2a" x="63" y="23" width="1" height="1"/>
+      <rect fill="#5c3a2a" x="57" y="24" width="1" height="1"/>
+      <rect fill="#5c3a2a" x="63" y="24" width="1" height="1"/>
+      <rect fill="#e0a58a" x="60" y="14" width="1" height="1"/>
+      <rect fill="#e0a58a" x="59" y="15" width="3" height="1"/>
+      <rect fill="#e0a58a" x="63" y="15" width="1" height="1"/>
+      <rect fill="#e0a58a" x="58" y="16" width="5" height="1"/>
+      <rect fill="#e0a58a" x="57" y="17" width="7" height="1"/>
+      <rect fill="#e0a58a" x="57" y="18" width="7" height="1"/>
+      <rect fill="#e0a58a" x="56" y="19" width="9" height="1"/>
+      <rect fill="#e0a58a" x="56" y="20" width="9" height="1"/>
+      <rect fill="#e0a58a" x="57" y="21" width="7" height="1"/>
+      <rect fill="#e0a58a" x="57" y="22" width="7" height="1"/>
+      <rect fill="#e0a58a" x="58" y="23" width="5" height="1"/>
+      <rect fill="#e0a58a" x="58" y="24" width="5" height="1"/>
+      <rect fill="#ecb89f" x="59" y="17" width="3" height="1"/>
+      <rect fill="#ecb89f" x="58" y="18" width="5" height="1"/>
+      <rect fill="#ecb89f" x="58" y="19" width="5" height="1"/>
+      <rect fill="#ecb89f" x="58" y="20" width="5" height="1"/>
+      <rect fill="#ecb89f" x="58" y="21" width="5" height="1"/>
+      <rect fill="#ecb89f" x="59" y="22" width="3" height="1"/>
+      <rect fill="#f5d6c2" x="60" y="19" width="1" height="1"/>
+      <rect fill="#f5d6c2" x="59" y="20" width="3" height="1"/>
+      <rect fill="#f5d6c2" x="59" y="21" width="3" height="1"/>
+      <rect fill="#f5d6c2" x="60" y="22" width="1" height="1"/>
+    </g>
+
+    <!-- ground -->
+    <rect fill="#3a5966" x="27" y="38" width="67" height="1"/>
+    <rect fill="#1f3c47" x="27" y="39" width="67" height="1"/>
+  </g>
+
+  <!-- meta: bottom-right -->
+  <g font-family="'Work Sans', -apple-system, 'Helvetica Neue', sans-serif" text-anchor="end">
+    <text x="1104" y="528" font-size="18" font-weight="500" letter-spacing="2.88" fill="#b8ccd4">ALETHIA [HESTIA]</text>
+    <text x="1104" y="558" font-size="18" font-weight="400" letter-spacing="2.16" fill="#6a848d">HESTIA-23.GITHUB.IO</text>
+  </g>
+</svg>
