@@ -4,12 +4,13 @@ import Hero from '../components/Hero.astro';
 import Section from '../components/Section.astro';
 import ProjectList from '../components/ProjectList.astro';
 import BackToTop from '../components/BackToTop.astro';
+import BookMarked from '../components/icons/BookMarked.astro';
 import { PROJECTS } from '../data/projects';
 ---
 
 <Layout title="Hestia">
   <Hero />
-  <Section eyebrow="§ Featured" title="Pinned Work">
+  <Section title="Pinned Work" icon={BookMarked}>
     <ProjectList projects={PROJECTS.slice(0, 4)} cta />
   </Section>
   <BackToTop />

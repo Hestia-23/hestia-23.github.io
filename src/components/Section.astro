@@ -1,14 +1,29 @@
 ---
+import Amphora from './icons/Amphora.astro';
+
 interface Props {
   eyebrow?: string;
   title?: string;
+  icon?: any;
+  centered?: boolean;
 }
 
-const { eyebrow, title } = Astro.props;
+const { eyebrow, title, icon: Icon = Amphora, centered = false } = Astro.props;
+const iconInTitle = !eyebrow && !!title;
 ---
 
-<section class="section">
-  {eyebrow && <div class="section-eyebrow">{eyebrow}</div>}
-  {title && <h2 class="section-title">{title}</h2>}
+<section class={`section ${centered ? 'section-centered' : ''}`}>
+  {eyebrow && (
+    <div class="section-eyebrow">
+      <Icon class="section-eyebrow-icon" />
+      <span>{eyebrow}</span>
+    </div>
+  )}
+  {title && (
+    <h2 class="section-title">
+      {iconInTitle && <Icon class="section-title-icon" />}
+      <span>{title}</span>
+    </h2>
+  )}
   <slot />
 </section>

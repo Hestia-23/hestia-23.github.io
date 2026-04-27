@@ -3,11 +3,12 @@ import Layout from '../layouts/Layout.astro';
 import Section from '../components/Section.astro';
 import ProjectList from '../components/ProjectList.astro';
 import ProjectsFilter from '../components/ProjectsFilter.astro';
+import FolderRoot from '../components/icons/FolderRoot.astro';
 import { PROJECTS } from '../data/projects';
 ---
 
 <Layout title="Hestia · Projects">
-  <Section eyebrow="§ Projects" title="All work">
+  <Section title="All work" icon={FolderRoot}>
     <ProjectsFilter />
     <ProjectList projects={PROJECTS} />
   </Section>
