@@ -6,13 +6,14 @@ interface Props {
   title?: string;
   icon?: any;
   centered?: boolean;
+  flushFooter?: boolean;
 }
 
-const { eyebrow, title, icon: Icon = Amphora, centered = false } = Astro.props;
+const { eyebrow, title, icon: Icon = Amphora, centered = false, flushFooter = false } = Astro.props;
 const iconInTitle = !eyebrow && !!title;
 ---
 
-<section class={`section ${centered ? 'section-centered' : ''}`}>
+<section class={`section ${centered ? 'section-centered' : ''} ${flushFooter ? 'section-flush-footer' : ''}`}>
   {eyebrow && (
     <div class="section-eyebrow">
       <Icon class="section-eyebrow-icon" />

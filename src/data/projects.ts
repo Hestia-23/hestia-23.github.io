@@ -78,11 +78,11 @@ export const PROJECTS: Project[] = [
     subtitle: 'An interactive UI playground',
     date: 'In development',
     description:
-      'An interactive UI playground themed around Hestia and the hearth. Visitors come to play with components, layouts, and small interactions.',
+      'An interactive UI playground themed around Alethia and the hearth. Visitors come to play with components, layouts, and small interactions.',
     stack: ['Astro', 'Vanilla CSS'],
     status: 'In progress',
     body: [
-      'Originally drafted as my portfolio site. When the portfolio took its own home, Hearth UI pivoted: now an interactive playground for UI work, themed around Hestia and the hearth.',
+      'Originally drafted as my portfolio site. When the portfolio took its own home, Hearth UI pivoted: now an interactive playground for UI work, themed around Alethia and the hearth.',
       'The intent is hands-on. Components, micro-interactions, and small toys you can poke at, not a static showcase.',
     ],
     repoUrl: 'https://github.com/hestia-23/hearth-ui',

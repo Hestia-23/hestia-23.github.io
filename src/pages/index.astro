@@ -8,9 +8,9 @@ import BookMarked from '../components/icons/BookMarked.astro';
 import { PROJECTS } from '../data/projects';
 ---
 
-<Layout title="Hestia">
+<Layout title="Alethia">
   <Hero />
-  <Section title="Pinned Work" icon={BookMarked}>
+  <Section title="Pinned Work" icon={BookMarked} flushFooter>
     <ProjectList projects={PROJECTS.slice(0, 4)} cta />
   </Section>
   <BackToTop />

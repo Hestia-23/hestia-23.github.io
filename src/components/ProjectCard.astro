@@ -19,7 +19,7 @@ const numLabel = String(index + 1).padStart(2, '0');
     <span class="project-num">{numLabel}</span>
     <span class="project-title">
       {project.title}
-      {project.subtitle && <em>{project.subtitle}</em>}
+      {project.subtitle && <span class="project-subtitle">{project.subtitle}</span>}
     </span>
   </div>
   <p class="project-card-body">{project.description}</p>

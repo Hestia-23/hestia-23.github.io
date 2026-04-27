@@ -60,7 +60,7 @@ const STACK_ICONS: Record<string, any> = {
 };
 ---
 
-<Layout title={`Hestia · ${project.title}`}>
+<Layout title={`Alethia · ${project.title}`}>
   <Section eyebrow={project.date} title={project.title}>
     <BackLink href="/projects/" />
 
@@ -125,7 +125,7 @@ const STACK_ICONS: Record<string, any> = {
     </dl>
 
     <div class="prose">
-      {project.subtitle && <p class="project-detail-subtitle"><em>{project.subtitle}.</em></p>}
+      {project.subtitle && <p class="project-detail-subtitle">{project.subtitle}.</p>}
       {project.body.map((para) => <p>{para}</p>)}
     </div>
 

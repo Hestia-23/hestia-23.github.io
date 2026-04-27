@@ -14,7 +14,7 @@ const sizeStyle = size ? `width: ${size}px; height: ${size}px; ${baseStyle}` : b
   style={sizeStyle}
   viewBox="0 0 100 100"
   role="img"
-  aria-label="Hestia hearth, lit"
+  aria-label="Alethia hearth, lit"
   tabindex="0"
 >
   <defs>
@@ -115,9 +115,9 @@ const sizeStyle = size ? `width: ${size}px; height: ${size}px; ${baseStyle}` : b
 <script>
   const STATES = ['is-lit', 'is-dim', 'is-out'] as const;
   const LABELS: Record<typeof STATES[number], string> = {
-    'is-lit': 'Hestia hearth, lit',
-    'is-dim': 'Hestia hearth, dim',
-    'is-out': 'Hestia hearth, gone out',
+    'is-lit': 'Alethia hearth, lit',
+    'is-dim': 'Alethia hearth, dim',
+    'is-out': 'Alethia hearth, gone out',
   };
   const RELIGHT_MS = 700;
 

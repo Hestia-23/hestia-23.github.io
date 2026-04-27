@@ -79,7 +79,6 @@
 }
 .hero-lede {
   font-family: var(--font-display);
-  font-style: italic;
   font-weight: 400;
   font-size: var(--step-2);
   line-height: 1.5;
@@ -171,7 +170,6 @@
 }
 .project-num {
   font-family: var(--font-display);
-  font-style: italic;
   color: var(--ember);
   font-size: 14px;
 }
@@ -182,8 +180,7 @@
   color: var(--fg);
   line-height: 1.2;
 }
-.project-title em {
-  font-style: italic;
+.project-title .project-subtitle {
   color: var(--fg-muted);
   font-weight: 400;
   font-size: 0.78em;
@@ -221,7 +218,6 @@
 }
 .project-status {
   font-family: var(--font-display);
-  font-style: italic;
   font-size: 14px;
   color: var(--fg-subtle);
   white-space: nowrap;
@@ -253,7 +249,6 @@
 }
 .projects-filter-search input[type="search"]::placeholder {
   color: var(--fg-faint);
-  font-style: italic;
 }
 .projects-filter-search input[type="search"]:focus {
   outline: none;
@@ -295,7 +290,6 @@
   grid-column: 1 / -1;
   margin: 0;
   font-family: var(--font-display);
-  font-style: italic;
   color: var(--fg-muted);
   text-align: center;
   padding: var(--space-5) 0;
@@ -319,12 +313,10 @@
 .project-card-placeholder .project-num,
 .project-card-placeholder .project-title {
   color: var(--fg-faint);
-  font-style: italic;
   font-weight: 400;
 }
 .project-card-placeholder .project-card-body {
   color: var(--fg-faint);
-  font-style: italic;
 }
 
 .project-list-cta {
@@ -332,6 +324,9 @@
   display: flex;
   justify-content: flex-end;
 }
+.section-flush-footer { padding-bottom: var(--space-7) !important; }
+.section-flush-footer .project-list-cta { margin-top: var(--space-4); }
+.section-flush-footer + .footer { padding-top: var(--space-7); padding-bottom: var(--space-7); }
 .project-list-cta-link {
   display: inline-flex;
   align-items: center;
@@ -341,14 +336,11 @@
   font-weight: 500;
   color: var(--accent);
   text-decoration: none;
-  border-bottom: 1px solid var(--accent-wash);
-  padding-bottom: 2px;
-  transition: color var(--dur-fast), border-color var(--dur-fast);
+  transition: color var(--dur-fast);
 }
 .project-list-cta-link:hover,
 .project-list-cta-link:focus-visible {
   color: var(--accent-hover);
-  border-bottom-color: var(--accent);
   outline: none;
 }
 .project-list-cta-link .arrow {
@@ -477,7 +469,6 @@
 
 .contact-value {
   font-family: var(--font-display);
-  font-style: italic;
   font-size: var(--step-2);
   color: var(--accent);
   text-align: right;
@@ -535,7 +526,7 @@
 .footer a { color: var(--fg-muted); text-decoration: none; }
 .footer a:hover { color: var(--accent); }
 .footer-ornament { opacity: 0.4; color: var(--fg-subtle); display: inline-flex; }
-.footer-ornament .icon { width: 16px; height: 16px; }
+.footer-ornament .icon { width: 24px; height: 24px; }
 
 .back-link {
   font-family: var(--font-body);
@@ -883,7 +874,6 @@
 }
 .project-spec dd {
   font-family: var(--font-display);
-  font-style: italic;
   font-size: var(--step-1);
   color: var(--fg);
   margin: 0;
@@ -952,7 +942,6 @@
 }
 .project-stack-text {
   font-family: var(--font-display);
-  font-style: italic;
   color: var(--fg-muted);
   font-size: var(--step-1);
 }
