@@ -25,7 +25,7 @@ export const PROJECTS: Project[] = [
     date: 'Open beta · March 2026',
     description:
       'Community manager and UI specialist. Work spans the website, agent dashboard, help center, and client UI.',
-    stack: ['Astro', 'HTML', 'CSS', 'JavaScript', 'TypeScript'],
+    stack: ['Go', 'Wails', 'React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Radix UI', 'MobX', 'Tiptap', 'Motion', 'dnd kit', 'Lucide', 'Astro', 'Alpine.js', 'htmx'],
     status: 'Active',
     body: [
       'GameVox is a privacy-focused voice chat platform. My role is community manager and UI specialist.',
