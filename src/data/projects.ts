@@ -24,13 +24,13 @@ export const PROJECTS: Project[] = [
     subtitle: 'Privacy-focused chat app',
     date: 'Open beta · March 2026',
     description:
-      'Community manager and UI specialist. Work spans marketing, socials, and frontend development.',
+      'Privacy-focused chat platform. I handle UI/UX and QA, plus help with marketing and socials.',
     stack: ['Go', 'Wails', 'HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Tailwind CSS', 'Radix UI', 'MobX', 'Lucide', 'Vite', 'Astro', 'Alpine.js', 'htmx'],
     status: 'Active',
     body: [
-      'GameVox is a privacy-focused voice chat platform. My role is community manager and UI specialist.',
-      'The UI work is real build work now, not just mockups. I am building the agent dashboard and help center from the ground up, and reworking the entire client UI. Mockups still exist as the design layer, but the bulk of the contribution at this point is shipped surface.',
-      'A lot of this portfolio\'s design discipline comes from trying to keep that work coherent across all four surfaces.',
+      'GameVox is a privacy-focused chat platform for gamers. I handle UI/UX and QA, and help with community, marketing, and socials.',
+      'I\'m building the agent dashboard and help center from the ground up, and reworking the entire client UI. Mockups remain part of the workflow, but most of the contribution now is shipped code.',
+      'Keeping the work coherent across the client, agent dashboard, help center, and the GameVox website is what shapes most of this portfolio\'s design discipline.',
     ],
     url: 'https://gamevox.com/',
     repoUrl: 'https://github.com/gamevoxvoice',
@@ -46,12 +46,12 @@ export const PROJECTS: Project[] = [
     subtitle: 'A neutral directory',
     date: 'In development',
     description:
-      'A neutral, filterable directory of Discord alternative platforms. No rankings, no reviews, no ads, no tracking.',
+      'A neutral, filterable directory of Discord alternative platforms. I built and maintain it. No rankings, reviews, ads, or tracking.',
     stack: ['Astro'],
     status: 'In progress',
     body: [
-      "The internet has a lot of 'best of' lists and almost none of them are neutral. One rule here: show the platforms, show what they do, let the reader decide.",
-      'Data is a static JSON file under version control. Every change is a pull request; every addition has a one-line rationale.',
+      "Most 'best of' lists aren't neutral. The rule here: show the platforms, show what they do, let the reader decide.",
+      'Data lives in a static JSON file under version control. Every change is a pull request. Every addition gets a one-line rationale.',
     ],
     repoUrl: 'https://github.com/Hestia-23/discordalternatives',
   },
@@ -61,7 +61,7 @@ export const PROJECTS: Project[] = [
     subtitle: 'Period and fertility tracker',
     date: 'In development',
     description:
-      'A free, open-source period and fertility tracker for Android and iOS. Offline-first, zero-knowledge sync, no ads, no telemetry.',
+      'An open-source period and fertility tracker for Android and iOS, rooted in Catholic tradition. I built it. Offline-first, zero-knowledge sync, no ads, no telemetry.',
     stack: ['Kotlin', 'Rust'],
     status: 'In progress',
     body: [
@@ -78,11 +78,11 @@ export const PROJECTS: Project[] = [
     subtitle: 'An interactive UI playground',
     date: 'In development',
     description:
-      'An interactive UI playground themed around Alethia and the hearth. Visitors come to play with components, layouts, and small interactions.',
+      'An interactive UI playground I built for components, layouts, and small interactions you can poke at.',
     stack: ['Astro', 'Vanilla CSS'],
     status: 'In progress',
     body: [
-      'Originally drafted as my portfolio site. When the portfolio took its own home, Hearth UI pivoted: now an interactive playground for UI work, themed around Alethia and the hearth.',
+      'Originally drafted as my portfolio site. When the portfolio took its own home, Hearth UI pivoted into an interactive playground for UI work, themed around Hestia and the hearth.',
       'The intent is hands-on. Components, micro-interactions, and small toys you can poke at, not a static showcase.',
     ],
     repoUrl: 'https://github.com/hestia-23/hearth-ui',
