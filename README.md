@@ -16,20 +16,22 @@ Personal portfolio. Astro 6, TypeScript strict, vanilla CSS, deployed to GitHub 
 
 ## Local Dev
 
-Requires Node >=22.12 and npm.
+Requires Node >=22.12 and pnpm 11. The pnpm version is pinned via the `packageManager` field in `package.json`; run `corepack enable` to let Node provision it automatically, or install pnpm globally.
 
 | Command | Action |
 | ------- | ------ |
-| `npm install` | Install dependencies |
-| `npm run dev` | Dev server at http://localhost:4321 |
-| `npm run build` | Static build to `dist/` |
-| `npm run preview` | Serve the build locally |
-| `npm run astro ...` | Astro CLI passthrough |
+| `pnpm install` | Install dependencies |
+| `pnpm dev` | Dev server at http://localhost:4321 |
+| `pnpm build` | Static build to `dist/` |
+| `pnpm preview` | Serve the build locally |
+| `pnpm astro ...` | Astro CLI passthrough |
 
 Minimal client-side JavaScript: only the back-to-top button, projects filter, and pixel shrine ship interactive scripts. Everything else is CSS (hover, focus, `prefers-color-scheme` dark mode, `prefers-reduced-motion`).
 
 ## Deploy
 
 GitHub Actions handles it. `.github/workflows/deploy.yml` fires on push to `master` (and manual `workflow_dispatch`). The build runs via `withastro/action@v6`; deploy via `actions/deploy-pages@v5`.
+
+The action auto-detects pnpm from `pnpm-lock.yaml` and reads the pinned version from the `packageManager` field. Do not add a `package-manager` input to the workflow: specifying the pnpm version in two places fails the build with "Multiple versions of pnpm specified".
 
 One-time repo setting: Settings → Pages → Source must be "GitHub Actions", not a branch.
