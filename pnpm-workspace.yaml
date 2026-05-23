@@ -1,0 +1,5 @@
+# Allow build scripts for trusted dependencies (pnpm 11 is secure-by-default).
+# esbuild: Vite's bundler binary; sharp: Astro's image-optimization service.
+allowBuilds:
+  esbuild: true
+  sharp: true

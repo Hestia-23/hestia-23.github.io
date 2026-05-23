@@ -2,6 +2,7 @@
   "name": "portfolio",
   "type": "module",
   "version": "0.0.1",
+  "packageManager": "pnpm@11.1.0",
   "engines": {
     "node": ">=22.12.0"
   },
@@ -13,6 +14,6 @@
     "og:build": "node scripts/build-og-image.mjs"
   },
   "dependencies": {
-    "astro": "^6.1.9"
+    "astro": "6.1.9"
   }
 }
